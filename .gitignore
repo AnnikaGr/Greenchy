@@ -4,7 +4,4 @@ dist
 package-lock.json
 **/*solved*
 .vs
-
-/public/*.js
-/public/*.html
 firebaseConfig.js

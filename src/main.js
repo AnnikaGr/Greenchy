@@ -1,14 +1,28 @@
 import { createApp } from 'vue'
-import App from './App.vue'
 import firebase from 'firebase/compat/app'
 import firebaseConfig from "./firebaseConfig"
 import {observeAuthStatus} from "./firebaseAuthModel"
 import UserModel from "./userModel"
+import Authentication from './presenters/authenticationPresenter'
 
 firebase.initializeApp(firebaseConfig)
-const userModel = new UserModel()
+var userModel = new UserModel()
 observeAuthStatus(userModel)
 
-createApp(App).mount('#app')
+const App = {
+    data(){
+        return {
+            userModel: userModel
+        }
+    },
+    render(){
+        return (
+            <div>
+                <Authentication/>
+                <button class="button" onClick={() => console.log(this.userModel)}>Log current user</button>
+            </div>
+        );
+    }
+}
 
-export {userModel}
+createApp(App).mount('#app')
