@@ -1,12 +1,12 @@
 class UserModel {
   constructor(
-    displayName,
-    email,
-    emailVerified,
-    photoURL,
-    uid,
-    phoneNumber,
-    providerData
+    displayName = null,
+    email = null,
+    emailVerified = null,
+    photoURL = null,
+    uid = null,
+    phoneNumber = null,
+    providerData = null
   ) {
     //Set this.observers to an empty array [] first thing in the constructor .
     //It needs to be first because some code used in the constructor may already notify observers.
