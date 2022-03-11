@@ -1,8 +1,6 @@
 function AuthenticationView(props) {
     return (
-        <div id="auth-container">
-            Authentication
-        </div>
+        <div id="auth-container"/>
     );
 }
 
