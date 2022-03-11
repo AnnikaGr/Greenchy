@@ -3,7 +3,6 @@
 dist
 package-lock.json
 **/*solved*
-**/*Config.js*
 .vs
 
 /public/*.js
