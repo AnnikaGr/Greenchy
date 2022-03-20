@@ -1,3 +1,4 @@
+import { RouterLink } from "vue-router";
 function NavBarView(props) {
         return (
         <div>
@@ -25,7 +26,7 @@ function NavBarView(props) {
                                 <div class="navbar-end">
                                 <div class="navbar-item">
                                     <div class="buttons">
-                                    <a class="button " style="background-color:#71bf71">
+                                    <a href="/login" class="button " style="background-color:#71bf71">
                                         <strong>Sign up</strong>
                                     </a>
                                     <a class="button is-light">
