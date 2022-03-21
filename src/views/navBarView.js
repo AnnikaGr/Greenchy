@@ -18,22 +18,30 @@ function NavBarView(props) {
 
                             <div id="navbarBasicExample" class="navbar-menu">
                                 <div class="navbar-start">
-                                <a class="navbar-item">
-                                    Home
-                                </a>
+                                    <a class="navbar-item">
+                                        Home
+                                    </a>
                                 </div>
 
                                 <div class="navbar-end">
-                                <div class="navbar-item">
-                                    <div class="buttons">
-                                    <a href="/login" class="button " style="background-color:#71bf71">
-                                        <strong>Sign up</strong>
-                                    </a>
-                                    <a class="button is-light">
-                                        Log in
-                                    </a>
+                                    <div class="navbar-item">
+                                        <div class="buttons">
+                                            {
+                                                props.userLoggedIn ? 
+                                                <a class="button is-light" onClick={() => props.signOut()}>
+                                                    Log out
+                                                </a> :
+                                                <div>
+                                                    <a href="/signup" class="button is-light">
+                                                        Sign up
+                                                    </a>
+                                                    <a href="/login" class="button primary">
+                                                        <strong>Log in</strong>
+                                                    </a> 
+                                                </div>
+                                            }
+                                        </div>
                                     </div>
-                                </div>
                                 </div>
                             </div>
                             </nav>
