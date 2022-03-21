@@ -18,7 +18,7 @@ const App = {
     render(){
         return (
             <div>
-                <Authentication/>
+                <Authentication isSignUp={false}/>
                 <button class="button" onClick={() => console.log(this.userModel)}>Log current user</button>
             </div>
         );
