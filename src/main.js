@@ -3,7 +3,7 @@ import firebase from 'firebase/compat/app'
 import firebaseConfig from "./firebaseConfig"
 import {observeAuthStatus} from "./firebaseAuthModel"
 import UserModel from "./userModel"
-import Authentication from './presenters/authenticationPresenter'
+import WelcomePage from './presenters/welcomePagePresenter'
 
 firebase.initializeApp(firebaseConfig)
 var userModel = new UserModel()
@@ -18,8 +18,7 @@ const App = {
     render(){
         return (
             <div>
-                <Authentication/>
-                <button class="button" onClick={() => console.log(this.userModel)}>Log current user</button>
+                <WelcomePage/>
             </div>
         );
     }
