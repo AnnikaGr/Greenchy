@@ -15,27 +15,23 @@ function observeAuthStatus(userModel) {
 			} else {
 				userModel.reset()
 			}
-		},
-		function (error) {
-			console.log(error);
-		}
+		}, logError
 	);
 }
 
 //login
 function signInWithFirebase(credentials) {
 	const auth = getAuth();
-	signInWithEmailAndPassword(auth, credentials.email, credentials.password)
+	return signInWithEmailAndPassword(auth, credentials.email, credentials.password)
 		.then((userCredential) => {
 			console.log(userCredential)
 		})
-		.catch(logError)
 }
 
 //register
 function signUpWithFirebase(credentials) {
 	const auth = getAuth();
-	createUserWithEmailAndPassword(auth, credentials.email, credentials.password)
+	return createUserWithEmailAndPassword(auth, credentials.email, credentials.password)
 		.then((userCredential) => {
 			updateProfile(userCredential.user, { displayName: credentials.name })
 				.then((userCredential) => {
@@ -44,13 +40,12 @@ function signUpWithFirebase(credentials) {
 				})
 				.catch(logError)
 		})
-		.catch(logError)
 }
 
 // logout
 function signOutFromFirebase() {
 	const auth = getAuth();
-	signOut(auth)
+	return signOut(auth)
 		.catch(logError)
 }
 

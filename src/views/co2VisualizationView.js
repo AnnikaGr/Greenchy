@@ -4,7 +4,7 @@ import "charts.css";
 function Co2VisualizationView(props) {
   //TODO: fill table with tr with each one td
   return (
-    <table class="charts-css bar show-labels show-4-secondary-axes co2-chart">
+    <table class="charts-css bar show-labels show-4-secondary-axes co2-chart block">
       <tbody>{renderData(props.results)}</tbody>
     </table>
   );

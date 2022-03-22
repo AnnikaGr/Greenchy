@@ -18,9 +18,9 @@ function NavBarView(props) {
 
                             <div id="navbarBasicExample" class="navbar-menu">
                                 <div class="navbar-start">
-                                    <a class="navbar-item">
+                                    <router-link to="/" class="navbar-item">
                                         Home
-                                    </a>
+                                    </router-link>
                                 </div>
 
                                 <div class="navbar-end">

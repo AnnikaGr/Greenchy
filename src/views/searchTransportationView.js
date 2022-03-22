@@ -8,17 +8,16 @@ function SearchTransportationView(props) {
   }
 
   return (
-    <div class="searchForm">
+    <div class="searchForm container is-fluid box">
       <h2 class="title is-4"> Add Transportation </h2>
       <label class="subtitle is-5" for="search-input">
         {" "}
         Distance{" "}
       </label>
       <input
-        class="input is-primary"
+        class="input block"
         type="text"
         placeholder="Enter distance"
-        type="text"
         id="search-input"
         name="search-input"
         onChange={searchChangeACB}

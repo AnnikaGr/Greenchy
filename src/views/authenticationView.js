@@ -1,5 +1,5 @@
 const AuthenticationView = {
-    props: ["isSignUp", "signIn", "signUp"],
+    props: ["isSignUp", "signIn", "signUp", "error"],
     data() {
         return {
             credentials: {}
@@ -32,6 +32,8 @@ const AuthenticationView = {
                                     <input class="input" type="password" onChange={(e) => this.credentials.password = e.target.value} placeholder="********" />
                                 </div>
                             </div>
+
+                            {this.error.message ? <div class="has-text-danger">{this.error.message}</div> : ""}
 
                             <a class="button is-primary" onClick={() => {
                                 if (this.isSignUp) {
