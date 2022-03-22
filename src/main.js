@@ -6,6 +6,8 @@ import { createApp } from 'vue'
 import NavBar from './presenters/navBarPresenter'
 import router from "./router.js"
 import { RouterView } from 'vue-router'
+import WelcomePage from './presenters/welcomePagePresenter'
+
 
 firebase.initializeApp(firebaseConfig)
 
@@ -22,7 +24,7 @@ const App = {
         return (
             <div>
                 <NavBar userModel={this.userModel}/>
-                <RouterView/>
+                { this.userModel.uid === null ? <WelcomePage/> : <RouterView/> }
             </div>
         );
     }

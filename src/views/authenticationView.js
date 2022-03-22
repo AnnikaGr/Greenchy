@@ -48,6 +48,7 @@ const AuthenticationView = {
         );
     }
 }
+/*comment*/
 
 
 export default AuthenticationView;
