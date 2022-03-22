@@ -8,7 +8,7 @@ import {
 } from "../emissionsSource.js";
 import resolvePromise from "../resolvePromise.js";
 
-const TransportationSelection = {
+const AddTransportation = {
   props: ["model"],
   data() {
     return {
@@ -59,4 +59,4 @@ function parseActivityData(data) {
   return [[data.emission_factor.category, data.co2e]];
 }
 
-export default TransportationSelection;
+export default AddTransportation;

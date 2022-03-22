@@ -43,7 +43,7 @@ const AuthenticationView = {
                         </div>
                     </div>
                 </div>
-                <a href="/" class="modal-close is-large" aria-label="close"></a>
+                <router-link to="/" class="modal-close is-large" aria-label="close"></router-link>
             </div>
         );
     }

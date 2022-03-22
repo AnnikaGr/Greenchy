@@ -1,6 +1,6 @@
 function WelcomePageView(props){
     return (
-        <section class="hero is-large primary">
+        <section class="hero is-large is-primary">
         <div class="hero-body">
           <p class="title">
             Welcome to Greenchy

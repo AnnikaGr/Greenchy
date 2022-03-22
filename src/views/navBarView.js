@@ -5,9 +5,9 @@ function NavBarView(props) {
                             <nav class="navbar" role="navigation" aria-label="main navigation">
                             <div class="navbar-brand">
                                 
-                                <a class="navbar-item" href="">
+                                <router-link class="navbar-item" to="/">
                                 <img src="https://drive.google.com/uc?id=1qOlFyxNasCEqDCBQsUyhMhdEYN2NDwBY" ></img>
-                                </a>
+                                </router-link>
 
                                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                                 <span aria-hidden="true"></span>
@@ -28,16 +28,16 @@ function NavBarView(props) {
                                         <div class="buttons">
                                             {
                                                 props.userLoggedIn ? 
-                                                <a class="button is-light" onClick={() => props.signOut()}>
+                                                <router-link to="/welcome" class="button is-light" onClick={() => props.signOut()}>
                                                     Log out
-                                                </a> :
+                                                </router-link> :
                                                 <div>
-                                                    <a href="/signup" class="button is-light">
+                                                    <router-link to="/signup" class="button is-light">
                                                         Sign up
-                                                    </a>
-                                                    <a href="/login" class="button primary">
+                                                    </router-link>
+                                                    <router-link to="/login" class="button is-primary">
                                                         <strong>Log in</strong>
-                                                    </a> 
+                                                    </router-link> 
                                                 </div>
                                             }
                                         </div>

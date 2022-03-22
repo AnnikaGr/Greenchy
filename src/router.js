@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import AddTransportation from './presenters/addTransportationPresenter.js'
 import Authentication from './presenters/authenticationPresenter.js'
+import WelcomePage from './presenters/welcomePagePresenter.js'
 
 const routes = [
     {
@@ -14,6 +16,19 @@ const routes = [
         component: Authentication,
         props: { isSignUp: true }
     },
+    {
+        path: '/welcome',
+        name: 'welcomePage',
+        component: WelcomePage,
+        meta: { requiresAuth: false }
+
+    },
+    {
+        path: '/',
+        name: 'addTransportation',
+        component: AddTransportation,
+        meta: { requiresAuth: true }
+    }
 ]
 
 const router = createRouter({ history: createWebHistory(), routes })
