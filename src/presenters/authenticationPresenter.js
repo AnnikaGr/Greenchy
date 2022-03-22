@@ -1,25 +1,18 @@
 import AuthenticationView from "@/views/authenticationView"
-import uiConfig from "@/firebaseUiConfig"
-import * as firebaseui from "firebaseui"
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/auth'
-import 'firebaseui/dist/firebaseui.css'
+import { signInWithFirebase, signUpWithFirebase } from "@/firebaseAuthModel"
 
 const Authentication = {
-    data(){
-        return {
-            isActive: true
-        }
-    },
-    created(){
-        var ui = firebaseui.auth.AuthUI.getInstance()
-        if(!ui) {
-            ui = new firebaseui.auth.AuthUI(firebase.auth());
-        }
-        ui.start("#auth-container", uiConfig);
-    },
+    props: ["isSignUp"],
     render(){
-        return <AuthenticationView isActive={this.isActive} closeModal={() => this.isActive = false}/>
+        return <AuthenticationView isSignUp={this.isSignUp} signIn={signIn} signUp={signUp} />
+
+        function signIn(credentials) {
+            signInWithFirebase(credentials)
+        }
+
+        function signUp(credentials) {
+            signUpWithFirebase(credentials)
+        }
     }
 }
 
