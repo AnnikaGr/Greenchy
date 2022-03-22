@@ -6,3 +6,7 @@
     margin: 0 auto;
     --labels-size: 100px;
 }
+
+.primary {
+    background-color: #71bf71
+}

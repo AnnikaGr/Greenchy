@@ -1,13 +1,18 @@
 import AuthenticationView from "@/views/authenticationView"
+import { signInWithFirebase, signUpWithFirebase } from "@/firebaseAuthModel"
 
 const Authentication = {
-    data(){
-        return {
-            isActive: true
-        }
-    },
+    props: ["isSignUp"],
     render(){
-        return <AuthenticationView isActive={this.isActive} closeModal={() => this.isActive = false}/>
+        return <AuthenticationView isSignUp={this.isSignUp} signIn={signIn} signUp={signUp} />
+
+        function signIn(credentials) {
+            signInWithFirebase(credentials)
+        }
+
+        function signUp(credentials) {
+            signUpWithFirebase(credentials)
+        }
     }
 }
 
