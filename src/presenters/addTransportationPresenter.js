@@ -51,10 +51,7 @@ const AddTransportation = {
         />
         {promiseNoData(component.promiseState) || (
           <Co2VisualizationView
-            //TODO implement for several activities
             results={parseActivityData(component.promiseState.data)}
-            //  array of data to visualize (label, kg co2)
-            //  searchResults={component.promiseState.data}
             //  onResultClicked={onResultClickedACB}
           />
         )}

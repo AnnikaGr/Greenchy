@@ -9,10 +9,10 @@ function SearchTransportationView(props) {
 
   return (
     <div class="searchForm container is-fluid box">
-      <h2 class="title is-4"> Add Transportation </h2>
+      <h2 class="title is-4"> Add transportation: </h2>
       <label class="subtitle is-5" for="search-input">
         {" "}
-        Distance{" "}
+        Travel distance{" "}
       </label>
       <input
         class="input block"
@@ -23,7 +23,7 @@ function SearchTransportationView(props) {
         onChange={searchChangeACB}
       />
       <button onClick={getAlternatives} class="button is-primary">
-        See alternatives!
+        Compare alternatives
       </button>
     </div>
   );
