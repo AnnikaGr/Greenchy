@@ -7,6 +7,7 @@ import {
   getEmissionsForRailTravel,
 } from "../emissionsSource.js";
 import resolvePromise from "../resolvePromise.js";
+import tripModel from "@/tripModel.js";
 
 const AddTransportation = {
   props: ["model"],
@@ -39,8 +40,10 @@ const AddTransportation = {
       return Promise.all(emissionsPromiseArray);
     }
 
-    function onResultClickedACB(result) {
-      //add to trip in TripModel
+    function onSelectTransportACB(transportSelection) {
+      //console.log(transportSelection); //for now only printing but needs to save in tripModel
+      tripModel.modeOfTransport = transportSelection[0];
+      console.log(tripModel)
     }
 
     return (
@@ -52,7 +55,7 @@ const AddTransportation = {
         {promiseNoData(component.promiseState) || (
           <Co2VisualizationView
             results={parseActivityData(component.promiseState.data)}
-            //  onResultClicked={onResultClickedACB}
+            onSelectTransport={onSelectTransportACB}
           />
         )}
       </div>
