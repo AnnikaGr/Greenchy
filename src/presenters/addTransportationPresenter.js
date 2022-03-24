@@ -25,9 +25,27 @@ const AddTransportation = {
 
     function onAlternativesSearchACB() {
       resolvePromise(
-        getEmissionsForRoadTravel(parseFloat(component.searchText)),
+        getEmissionsForTravelAlternatives(parseFloat(component.searchText)),
         component.promiseState
       );
+    }
+
+    function getEmissionsForTravelAlternatives(distance) {
+      function alternativeEmissionsPromiseCB(distance) {
+        return [
+          getEmissionsForRoadTravel(distance),
+          getEmissionsForAirTravel(distance),
+          getEmissionsForRailTravel(distance),
+        ];
+      }
+
+      var alternatives = [travelalternatives1, 2, 3];
+      //const alternativeEmissionsPromiseArray = alternatives.map(
+      // alternativeEmissionsPromiseCB
+      //);
+      const alternativeEmissionsPromiseArray =
+        alternativeEmissionsPromiseCB(distance);
+      return Promise.all(alternativeEmissionsPromiseArray);
     }
 
     function onResultClickedACB(result) {

@@ -1,6 +1,6 @@
 import "charts.css";
 
-//props.results should contain a 2-dim array of labels of the activity and kgCo2 for each result activity
+//props.results should contain a 2-dim array of labels of the activity and amount of kgCo2 for each activity
 function Co2VisualizationView(props) {
   //TODO: fill table with tr with each one td
   return (
