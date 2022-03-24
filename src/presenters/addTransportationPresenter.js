@@ -31,21 +31,12 @@ const AddTransportation = {
     }
 
     function getEmissionsForTravelAlternatives(distance) {
-      function alternativeEmissionsPromiseCB(distance) {
-        return [
-          getEmissionsForRoadTravel(distance),
-          getEmissionsForAirTravel(distance),
-          getEmissionsForRailTravel(distance),
-        ];
-      }
-
-      var alternatives = [travelalternatives1, 2, 3];
-      //const alternativeEmissionsPromiseArray = alternatives.map(
-      // alternativeEmissionsPromiseCB
-      //);
-      const alternativeEmissionsPromiseArray =
-        alternativeEmissionsPromiseCB(distance);
-      return Promise.all(alternativeEmissionsPromiseArray);
+      const emissionsPromiseArray = [
+        getEmissionsForRoadTravel(distance),
+        getEmissionsForAirTravel(distance),
+        getEmissionsForRailTravel(distance),
+      ];
+      return Promise.all(emissionsPromiseArray);
     }
 
     function onResultClickedACB(result) {
@@ -73,8 +64,12 @@ const AddTransportation = {
 };
 
 function parseActivityData(data) {
-  //TODO implement for several activities
-  return [[data.emission_factor.category, data.co2e]];
+  function extractDetailsCB(activity) {
+    return [activity.emission_factor.category, activity.co2e];
+  }
+  let content = data.map(extractDetailsCB);
+
+  return content;
 }
 
 export default AddTransportation;
