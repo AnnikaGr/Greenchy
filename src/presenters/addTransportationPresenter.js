@@ -41,9 +41,8 @@ const AddTransportation = {
     }
 
     function onSelectTransportACB(transportSelection) {
-      //console.log(transportSelection); //for now only printing but needs to save in tripModel
-      tripModel.modeOfTransport = transportSelection[0];
-      console.log(tripModel)
+      console.log(component.model);
+      component.model.setTransportMode( transportSelection[0]);
     }
 
     return (

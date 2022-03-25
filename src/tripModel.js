@@ -1,14 +1,16 @@
 class tripModel {
     constructor(
       distance= null,
-      modeOfTransport = '',
+      modeOfTransport = {},
     ) {
-      //Set this.observers to an empty array [] first thing in the constructor .
-      //It needs to be first because some code used in the constructor may already notify observers.
+      this.observers = [];
       this.distance = distance;
       this.modeOfTransport = modeOfTransport;
-      this.observers = [];
     }
+    setDistance(co2e){
+      this.modeOfTransport.query = vehicle;
+    }
+ 
 }
 
 export default tripModel;

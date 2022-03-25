@@ -2,6 +2,7 @@ import firebase from 'firebase/compat/app'
 import firebaseConfig from "./firebaseConfig"
 import {observeAuthStatus} from "./firebaseAuthModel"
 import UserModel from "./userModel"
+import tripModel from './tripModel'
 import { createApp } from 'vue'
 import NavBar from './presenters/navBarPresenter'
 import router from "./router.js"
