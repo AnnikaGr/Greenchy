@@ -76,6 +76,7 @@ function renderData(co2Data) {
       <tr>
         <th scope="row">{co2DataPoint[0]}</th>
         <td key={co2DataPoint}>{co2DataPoint[1]}</td>;
+		<button onClick={() => props.onSelectTransport(co2DataPoint)}>+</button>
       </tr>
     );
   }
