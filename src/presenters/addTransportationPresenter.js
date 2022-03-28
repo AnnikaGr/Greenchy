@@ -41,8 +41,10 @@ const AddTransportation = {
     }
 
     function onSelectTransportACB(transportSelection) {
+      console.log(transportSelection);
+      component.model.setTransportMode(transportSelection[0]);
+      component.model.setCO2Emission(transportSelection[1]);
       console.log(component.model);
-      component.model.setTransportMode( transportSelection[0]);
     }
 
     return (
