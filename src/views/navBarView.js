@@ -1,5 +1,12 @@
 import { RouterLink } from "vue-router";
 function NavBarView(props) {
+    const toggleBurger = () => {
+        console.log('burger')
+        let burgerIcon = document.getElementById('burger');
+        let items = document.getElementById('navItems');
+        burgerIcon.classList.toggle('is-active');
+        items.classList.toggle('is-active');
+      };
         return (
         <div>
                             <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -9,14 +16,14 @@ function NavBarView(props) {
                                 <img src="https://drive.google.com/uc?id=1qOlFyxNasCEqDCBQsUyhMhdEYN2NDwBY" ></img>
                                 </router-link>
 
-                                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="true" data-target="navbarBasicExample" id='burger' onClick={toggleBurger}>
                                 <span aria-hidden="true"></span>
                                 <span aria-hidden="true"></span>
                                 <span aria-hidden="true"></span>
                                 </a>
                             </div>
 
-                            <div id="navbarBasicExample" class="navbar-menu">
+                            <div class="navbar-menu" id='navItems'>
                                 <div class="navbar-start">
                                     <router-link to="/" class="navbar-item">
                                         Home
