@@ -10,3 +10,21 @@
 .is-primary {
     background-color: #71bf71
 }
+
+
+
+
+/*--------Co2 Visualizations CSS----------------------*/
+.hero {
+    overflow: hidden;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+
+.lines,
+.months {
+    opacity: 100;
+}

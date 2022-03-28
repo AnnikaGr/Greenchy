@@ -7,6 +7,7 @@ import {
   getEmissionsForRailTravel,
 } from "../emissionsSource.js";
 import resolvePromise from "../resolvePromise.js";
+import animate from "../views/animation.js";
 
 const AddTransportation = {
   props: ["model"],
@@ -16,7 +17,9 @@ const AddTransportation = {
       promiseState: {},
     };
   },
-  created() {},
+  updated() {
+    animate();
+  },
   render() {
     const component = this;
     function onSearchInputChangeACB(value) {
