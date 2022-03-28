@@ -1,7 +1,6 @@
 import { RouterLink } from "vue-router";
 function NavBarView(props) {
     const toggleBurger = () => {
-        console.log('burger')
         let burgerIcon = document.getElementById('burger');
         let items = document.getElementById('navItems');
         burgerIcon.classList.toggle('is-active');
