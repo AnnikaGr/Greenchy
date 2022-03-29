@@ -1,5 +1,6 @@
 import SearchTransportationView from "../views/searchTransportationView.js";
 import Co2VisualizationView from "../views/co2VisualizationView.js";
+import tripView from "@/views/tripView.js";
 import promiseNoData from "../views/promiseNoData.js";
 import {
   getEmissionsForRoadTravel,
@@ -41,10 +42,8 @@ const AddTransportation = {
     }
 
     function onSelectTransportACB(transportSelection) {
-      console.log(transportSelection);
       component.model.setTransportMode(transportSelection[0]);
       component.model.setCO2Emission(transportSelection[1]);
-      console.log(component.model);
     }
 
     return (
@@ -59,6 +58,7 @@ const AddTransportation = {
             onSelectTransport={onSelectTransportACB}
           />
         )}
+        <tripView overallCo2={component.model.overallCo2} />
       </div>
     );
   },

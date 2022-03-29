@@ -16,7 +16,6 @@ class tripModel {
       this.overallCo2 = this.overallCo2 + co2;
     }
     setTransportMode(vehicle){
-      console.log(vehicle)
       this.modeOfTransport.query = vehicle;
     }
 
