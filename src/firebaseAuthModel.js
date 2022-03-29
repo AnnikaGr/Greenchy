@@ -1,7 +1,59 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import "firebase/compat/database"
 import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut} from 'firebase/auth'
 import { logError } from "./utils";
+import TripModel from "./tripModel";
+
+// Database
+
+function updateFirebaseFromModel(userModel) {
+    userModel.tripModel.addObserver(firebaseObserverACB)
+
+    function firebaseObserverACB(payload) {
+		const REF = userModel.uid + "/trip"
+        if (payload) {
+            if (payload.distance) {
+                firebase.database().ref(REF +"/distance").set(userModel.tripModel.distance);
+            }
+            if (payload.overallCo2) {
+                firebase.database().ref(REF +"/overallCo2").set(userModel.tripModel.overallCo2);
+            }
+            if (payload.modeOfTransport) {
+                firebase.database().ref(REF +"/modeOfTransport").set(userModel.tripModel.modeOfTransport)
+            }
+        }
+    }
+
+	return firebaseObserverACB
+}
+
+function updateModelFromFirebase(userModel) {
+	const REF = userModel.uid + "/trip"
+    firebase.database().ref(REF+"/distance")
+		.on("value", (firebaseData) => userModel.tripModel.setDistance(firebaseData.val()))
+
+    firebase.database().ref(REF+"/overallCo2")
+		.on("value", (firebaseData) => userModel.tripModel.setOverallCo2(firebaseData.val()))
+
+	firebase.database().ref(REF+"/modeOfTransport")
+		.on("value", (firebaseData) => userModel.tripModel.setModeOfTransport(firebaseData.val()))
+}
+
+function unsubscribeFromFirebaseUpdates(userModel) {
+	const REF = userModel.uid + "/trip"
+	firebase.database().ref(REF+"/distance").off("value")
+	firebase.database().ref(REF+"/overallCo2").off("value")
+	firebase.database().ref(REF+"/modeOfTransport").off("value")
+}
+
+function firebaseModelPromise(userModel) {
+	const REF = userModel.uid + "/trip"
+    return firebase.database().ref(REF).once("value")
+		.then(firebaseData => userModel.tripModel = new TripModel(firebaseData.val()?.distance, firebaseData.val()?.modeOfTransport, firebaseData.val()?.overallCo2));
+}
+
+// Authentication
 
 function observeAuthStatus(userModel) {
 	firebase.auth().onAuthStateChanged(
@@ -12,8 +64,13 @@ function observeAuthStatus(userModel) {
 				userModel.email = user.email;
 				userModel.photoURL = user.photoURL;
 				userModel.uid = user.uid;
+				firebaseModelPromise(userModel).then(() => {
+					updateFirebaseFromModel(userModel);
+					updateModelFromFirebase(userModel);
+				})
 			} else {
-				userModel.reset()
+				unsubscribeFromFirebaseUpdates(userModel);
+				userModel.reset();
 			}
 		}, logError
 	);

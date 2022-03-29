@@ -7,10 +7,9 @@ import {
   getEmissionsForRailTravel,
 } from "../emissionsSource.js";
 import resolvePromise from "../resolvePromise.js";
-import tripModel from "@/tripModel.js";
 
 const AddTransportation = {
-  props: ["model"],
+  props: ["userModel"],
   data() {
     return {
       searchText: "",
@@ -42,9 +41,9 @@ const AddTransportation = {
 
     function onSelectTransportACB(transportSelection) {
       console.log(transportSelection);
-      component.model.setTransportMode(transportSelection[0]);
-      component.model.setCO2Emission(transportSelection[1]);
-      console.log(component.model);
+      component.userModel.tripModel.setModeOfTransport(transportSelection[0]);
+      component.userModel.tripModel.setOverallCo2(transportSelection[1]);
+      console.log(component.userModel.tripModel);
     }
 
     return (

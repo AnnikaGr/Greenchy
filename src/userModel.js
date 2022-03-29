@@ -4,6 +4,7 @@ class UserModel {
     email = null,
     photoURL = null,
     uid = null,
+    tripModel = null
   ) {
     //Set this.observers to an empty array [] first thing in the constructor .
     //It needs to be first because some code used in the constructor may already notify observers.
@@ -11,6 +12,7 @@ class UserModel {
     this.email = email;
     this.photoURL = photoURL;
     this.uid = uid;
+    this.tripModel = tripModel;
     this.observers = [];
   }
 
@@ -19,6 +21,8 @@ class UserModel {
     this.email = null
     this.photoURL = null
     this.uid = null
+    this.tripModel = null
+    this.observers = []
   }
 
   /* Observer stuff */
