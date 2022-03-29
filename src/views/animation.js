@@ -11,7 +11,7 @@ function animate() {
     easing: barsEasing,
     duration: 500,
     delay: anime.stagger(100),
-    autoplay: false,
+    autoplay: true,
   });
 
   // Red Bars
@@ -22,23 +22,12 @@ function animate() {
     easing: barsEasing,
     duration: 500,
     delay: anime.stagger(100, { start: 100 }),
-    autoplay: false,
-  });
-
-  // Months
-  let animateMonths = anime({
-    targets: [".months", ".lines"],
-    opacity: [0, 1],
-    easing: "linear",
-    duration: 500,
-    delay: 150,
     autoplay: true,
   });
 
   document.addEventListener("click", () => {
     animateGreenBars.play();
     animateRedBars.play();
-    animateMonths.play();
   });
 }
 
