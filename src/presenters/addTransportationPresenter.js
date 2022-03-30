@@ -10,17 +10,21 @@ import {
 import resolvePromise from "../resolvePromise.js";
 import tripModel from "@/tripModel.js";
 
+
 const AddTransportation = {
   props: ["model"],
   data() {
     return {
       searchText: "",
       promiseState: {},
+      tripModel: new tripModel()
+      
     };
   },
   created() {},
   render() {
     const component = this;
+    console.log(component.model)
     function onSearchInputChangeACB(value) {
       component.searchText = value;
     }
@@ -42,8 +46,10 @@ const AddTransportation = {
     }
 
     function onSelectTransportACB(transportSelection) {
-      component.model.setTransportMode(transportSelection[0]);
-      component.model.setCO2Emission(transportSelection[1]);
+      console.log(component.tripModel)
+      component.tripModel.setTransportMode(transportSelection[0]);
+      component.tripModel.setCO2Emission(transportSelection[1]);
+
     }
 
     return (
@@ -58,7 +64,7 @@ const AddTransportation = {
             onSelectTransport={onSelectTransportACB}
           />
         )}
-        <tripView overallCo2={component.model.overallCo2} />
+        <tripView overallCo2={component.tripModel.overallCo2} />
       </div>
     );
   },
