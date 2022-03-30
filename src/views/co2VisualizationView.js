@@ -7,16 +7,21 @@ function Co2VisualizationView(props) {
 function renderData(co2Data) {
   function visualizeCo2DataPointCB(co2DataPoint) {
     return (
-      <div key={co2DataPoint} class="column is-one-quarter">
-        <button>+</button>
-        <text class="subtitle is-6"> {co2DataPoint[0]} </text>
-        <text class="subtitle is-7">{co2DataPoint[1]}</text>;
+      <div key={co2DataPoint} class="column is-one-quarter has-text-centered">
+        <text class="subtitle is-5"> {co2DataPoint[0]} </text> <br />
+        <button class="button is-primary is-outlined">
+          + Add to trip
+        </button>{" "}
+        <br />
+        <text class="subtitle is-7">{co2DataPoint[1]}</text>
+        <br />
         <svg
           class="bar"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           height="100vh"
+          width="25%"
         >
           <g class="Bars">
             <polygon
@@ -39,7 +44,7 @@ function drawBar(emissions) {
   const max_height = 600;
   let scale_factor = normalizeNumber(emissions);
   let height = scale_factor * max_height;
-  const shape = `0,0   36,0   36,${height}   0,${height}`;
+  const shape = `0,0   200,0   200,${height}   0,${height}`;
 
   return shape;
 }

@@ -7,10 +7,10 @@ function animate() {
   let greenBars = document.querySelectorAll(".bar-green");
   let animateGreenBars = anime({
     targets: [].slice.call(greenBars, 0).reverse(),
-    scaleY: [0, 1],
+    scaleY: [0.1, 1],
     easing: barsEasing,
-    duration: 500,
-    delay: anime.stagger(100),
+    duration: 2000,
+    delay: 500,
     autoplay: true,
   });
 
