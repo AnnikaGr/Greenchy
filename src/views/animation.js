@@ -13,22 +13,6 @@ function animate() {
     delay: 500,
     autoplay: true,
   });
-
-  // Red Bars
-  let redBars = document.querySelectorAll(".bar-red");
-  let animateRedBars = anime({
-    targets: [].slice.call(redBars, 0).reverse(),
-    scaleY: [0, 1],
-    easing: barsEasing,
-    duration: 500,
-    delay: anime.stagger(100, { start: 100 }),
-    autoplay: true,
-  });
-
-  document.addEventListener("click", () => {
-    animateGreenBars.play();
-    animateRedBars.play();
-  });
 }
 
 export default animate;
