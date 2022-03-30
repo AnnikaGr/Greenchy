@@ -21,7 +21,7 @@ function renderData(co2Data) {
           <g class="Bars">
             <polygon
               class="bar bar-green"
-              fill="#00AD6A"
+              fill={getColor(co2DataPoint[1])}
               points={drawBar(co2DataPoint[1])}
             ></polygon>
           </g>
@@ -37,14 +37,21 @@ function drawBar(emissions) {
   // order of point coordinates (x,y): top left   top right   bottom right  bottom left
 
   const max_height = 600;
-  let scale_factor = normalizeNumber(emissions, 2, 0);
+  let scale_factor = normalizeNumber(emissions);
   let height = scale_factor * max_height;
   const shape = `0,0   36,0   36,${height}   0,${height}`;
 
   return shape;
 }
 
-function normalizeNumber(val, max, min) {
+function getColor(emissions) {
+  var value = normalizeNumber(emissions);
+
+  var hue = ((1 - value) * 120).toString(10);
+  return ["hsl(", hue, ",100%, 70%)"].join("");
+}
+
+function normalizeNumber(val, max = 1.8, min = 1) {
   return (val - min) / (max - min);
 }
 
