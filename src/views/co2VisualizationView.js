@@ -16,12 +16,13 @@ function renderData(co2Data) {
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
+          height="100vh"
         >
           <g class="Bars">
             <polygon
               class="bar bar-green"
               fill="#00AD6A"
-              points="0 2.84217094e-14 36 2.84217094e-14 36 225.828125 0 225.828125"
+              points={drawBar(co2DataPoint[1])}
             ></polygon>
           </g>
         </svg>
@@ -30,6 +31,21 @@ function renderData(co2Data) {
   }
 
   return co2Data.map(visualizeCo2DataPointCB);
+}
+
+function drawBar(emissions) {
+  // order of point coordinates (x,y): top left   top right   bottom right  bottom left
+
+  const max_height = 600;
+  let scale_factor = normalizeNumber(emissions, 2, 0);
+  let height = scale_factor * max_height;
+  const shape = `0,0   36,0   36,${height}   0,${height}`;
+
+  return shape;
+}
+
+function normalizeNumber(val, max, min) {
+  return (val - min) / (max - min);
 }
 
 export default Co2VisualizationView;
