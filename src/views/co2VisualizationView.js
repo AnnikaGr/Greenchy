@@ -1,15 +1,15 @@
 //props.results should contain a 2-dim array of labels of the activity and amount of kgCo2 for each activity
 
 function Co2VisualizationView(props) {
-  return <div class="columns is-centered">{renderData(props.results)}</div>;
+  return <div class="columns is-centered">{renderData(props.results, props)}</div>;
 }
 
-function renderData(co2Data) {
+function renderData(co2Data, props) {
   function visualizeCo2DataPointCB(co2DataPoint) {
     return (
       <div key={co2DataPoint} class="column is-one-quarter has-text-centered">
         <text class="subtitle is-5"> {co2DataPoint[0]} </text> <br />
-        <button class="button is-primary is-outlined">
+        <button onClick={() => props.onSelectTransport(co2DataPoint)} class="button is-primary is-outlined">
           + Add to trip
         </button>{" "}
         <br />
