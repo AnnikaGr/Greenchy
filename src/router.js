@@ -28,7 +28,6 @@ const routes = [
         path: '/',
         name: 'addTransportation',
         component: AddTransportation,
-        props: { model: new tripModel()},
         meta: { requiresAuth: true }
     }
 ]
