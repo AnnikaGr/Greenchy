@@ -15,6 +15,10 @@ class TripModel {
     this.notifyObservers({distance: this.distance})
   }
 
+  addOverallCo2(co2) {
+    this.setOverallCo2(co2 + this.overallCo2)
+  }
+
   setOverallCo2(co2) {
     this.overallCo2 = co2;
     this.notifyObservers({overallCo2: this.overallCo2})

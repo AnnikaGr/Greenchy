@@ -1,5 +1,6 @@
 import SearchTransportationView from "../views/searchTransportationView.js";
 import Co2VisualizationView from "../views/co2VisualizationView.js";
+import TripView from "@/views/tripView.js";
 import promiseNoData from "../views/promiseNoData.js";
 import {
   getEmissionsForRoadTravel,
@@ -7,6 +8,9 @@ import {
   getEmissionsForRailTravel,
 } from "../emissionsSource.js";
 import resolvePromise from "../resolvePromise.js";
+import animate from "../views/animation.js";
+import tripModel from "@/tripModel.js";
+
 
 const AddTransportation = {
   props: ["userModel"],
@@ -14,11 +18,16 @@ const AddTransportation = {
     return {
       searchText: "",
       promiseState: {},
+      tripModel: new tripModel()
+      
     };
   },
-  created() {},
+  updated() {
+    animate();
+  },
   render() {
     const component = this;
+    console.log(component.model)
     function onSearchInputChangeACB(value) {
       component.searchText = value;
     }
@@ -42,7 +51,7 @@ const AddTransportation = {
     function onSelectTransportACB(transportSelection) {
       console.log(transportSelection);
       component.userModel.tripModel.setModeOfTransport(transportSelection[0]);
-      component.userModel.tripModel.setOverallCo2(transportSelection[1]);
+      component.userModel.tripModel.addOverallCo2(transportSelection[1]);
       console.log(component.userModel.tripModel);
     }
 
@@ -58,6 +67,7 @@ const AddTransportation = {
             onSelectTransport={onSelectTransportACB}
           />
         )}
+        <TripView overallCo2={component.userModel.tripModel.overallCo2} />
       </div>
     );
   },

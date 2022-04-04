@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import AddTransportation from './presenters/addTransportationPresenter.js'
 import Authentication from './presenters/authenticationPresenter.js'
 import WelcomePage from './presenters/welcomePagePresenter.js'
-import TripModel from './tripModel.js'
 
 const routes = [
     {
@@ -28,8 +27,8 @@ const routes = [
         path: '/',
         name: 'addTransportation',
         component: AddTransportation,
+        meta: { requiresAuth: true },
         props: true,
-        meta: { requiresAuth: true }
     }
 ]
 

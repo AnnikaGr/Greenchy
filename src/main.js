@@ -7,6 +7,7 @@ import { createApp } from 'vue'
 import NavBar from './presenters/navBarPresenter'
 import {router, addAuthRequirementToRouting} from "./router.js"
 import { RouterView } from 'vue-router'
+import addTransportationPresenter from './presenters/addTransportationPresenter'
 
 
 firebase.initializeApp(firebaseConfig)
@@ -14,7 +15,8 @@ firebase.initializeApp(firebaseConfig)
 const App = {
     data(){
         return {
-            userModel: new UserModel()
+            userModel: new UserModel(),
+            tripModel: new tripModel()
         }
     },
     created(){

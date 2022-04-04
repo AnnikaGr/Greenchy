@@ -10,3 +10,27 @@
 .is-primary {
     background-color: #71bf71
 }
+
+/*-----Travel Distance Input Field*/
+.input-field-wrapper {
+    position: relative;
+    font-family: sans-serif;
+    font-size: 14px;
+    width: max-content;
+}
+
+.placeholder {
+    position: absolute;
+    right: 4px;
+    top: 0.7rem;
+    pointer-events: none;
+    opacity: .5;
+}
+
+
+/*--------Co2 Visualizations CSS----------------------*/
+
+.lines,
+.months {
+    opacity: 0;
+}
