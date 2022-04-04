@@ -43,7 +43,10 @@ function renderData(co2_data, activity_worst_emissions, props) {
           <g class="Bars">
             <polygon
               class="bar bar-green"
-              fill={getColor(activity_co2_emissions[1])}
+              fill={getColor(
+                activity_co2_emissions[1],
+                activity_worst_emissions
+              )}
               points={drawBar(
                 activity_co2_emissions[1],
                 activity_worst_emissions
@@ -69,8 +72,8 @@ function drawBar(emissions, activity_worst_emissions) {
   return shape;
 }
 
-function getColor(emissions, acitivity_worst_emissions) {
-  var value = normalizeNumber(emissions, acitivity_worst_emissions);
+function getColor(emissions, activity_worst_emissions) {
+  var value = normalizeNumber(emissions, activity_worst_emissions);
 
   var hue = ((1 - value) * 120).toString(10);
   return ["hsl(", hue, ",100%, 70%)"].join("");
