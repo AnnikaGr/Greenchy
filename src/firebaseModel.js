@@ -51,9 +51,9 @@ function updateModelFromFirebase(userModel) {
     })
 
     firebase.database().ref(REF + "/trips").once("value").then(data => {
-        data.forEach(trip => {
-            const REF_TRIP = REF + "/trips/" + trip.id
-            const trip = userModel.tripsModel.getTrip(trip.id)
+        data.forEach(firebaseTrip => {
+            const REF_TRIP = REF + "/trips/" + firebaseTrip.id
+            const trip = userModel.tripsModel.getTrip(firebaseTrip.id)
 
             firebase.database().ref(REF_TRIP + "/transportations").on("child_added", (data) => {
                 if (!trip.transportations.find((transp) => transp.id === +data.key)) {
