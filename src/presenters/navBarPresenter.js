@@ -1,4 +1,4 @@
-import { signOutFromFirebase } from "@/firebaseAuthModel";
+import { signOutFromFirebase } from "@/firebaseModel"
 import NavBarView from "@/views/navBarView";
 
 export default

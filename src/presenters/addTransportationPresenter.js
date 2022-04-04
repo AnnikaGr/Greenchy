@@ -3,83 +3,80 @@ import Co2VisualizationView from "../views/co2VisualizationView.js";
 import TripView from "@/views/tripView.js";
 import promiseNoData from "../views/promiseNoData.js";
 import {
-  getEmissionsForRoadTravel,
-  getEmissionsForAirTravel,
-  getEmissionsForRailTravel,
+	getEmissionsForRoadTravel,
+	getEmissionsForAirTravel,
+	getEmissionsForRailTravel,
 } from "../emissionsSource.js";
 import resolvePromise from "../resolvePromise.js";
 import animate from "../views/animation.js";
-import tripModel from "@/tripModel.js";
 
 
 const AddTransportation = {
-  props: ["userModel"],
-  data() {
-    return {
-      searchText: "",
-      promiseState: {},
-      tripModel: new tripModel()
-      
-    };
-  },
-  updated() {
-    animate();
-  },
-  render() {
-    const component = this;
-    console.log(component.model)
-    function onSearchInputChangeACB(value) {
-      component.searchText = value;
-    }
+	props: ["trip"],
+	data() {
+		return {
+			searchText: "",
+			promiseState: {},
+		};
+	},
+	updated() {
+		animate();
+	},
+	render() {
+		const component = this;
+		console.log(component.model)
+		function onSearchInputChangeACB(value) {
+			component.searchText = value;
+		}
 
-    function onAlternativesSearchACB() {
-      resolvePromise(
-        getEmissionsForTravelAlternatives(parseFloat(component.searchText)),
-        component.promiseState
-      );
-    }
+		function onAlternativesSearchACB() {
+			resolvePromise(
+				getEmissionsForTravelAlternatives(parseFloat(component.searchText)),
+				component.promiseState
+			);
+		}
 
-    function getEmissionsForTravelAlternatives(distance) {
-      const emissionsPromiseArray = [
-        getEmissionsForRoadTravel(distance),
-        getEmissionsForAirTravel(distance),
-        getEmissionsForRailTravel(distance),
-      ];
-      return Promise.all(emissionsPromiseArray);
-    }
+		function getEmissionsForTravelAlternatives(distance) {
+			const emissionsPromiseArray = [
+				getEmissionsForRoadTravel(distance),
+				getEmissionsForAirTravel(distance),
+				getEmissionsForRailTravel(distance),
+			];
+			return Promise.all(emissionsPromiseArray);
+		}
 
-    function onSelectTransportACB(transportSelection) {
-      console.log(transportSelection);
-      component.userModel.tripModel.setModeOfTransport(transportSelection[0]);
-      component.userModel.tripModel.addOverallCo2(transportSelection[1]);
-      console.log(component.userModel.tripModel);
-    }
+		function onSelectTransportACB(transportSelection) {
+			console.log(transportSelection);
+			component.userModel.tripModel.setModeOfTransport(transportSelection[0]);
+			component.userModel.tripModel.addOverallCo2(transportSelection[1]);
+			console.log(component.userModel.tripModel);
+		}
 
-    return (
-      <div>
-        <SearchTransportationView
-          onSearchInputChange={onSearchInputChangeACB}
-          onAlternativesSearch={onAlternativesSearchACB}
-        />
-        {promiseNoData(component.promiseState) || (
-          <Co2VisualizationView
-            results={parseActivityData(component.promiseState.data)}
-            onSelectTransport={onSelectTransportACB}
-          />
-        )}
-        <TripView overallCo2={component.userModel.tripModel.overallCo2} />
-      </div>
-    );
-  },
+		return (
+			<div>
+				<SearchTransportationView
+					onSearchInputChange={onSearchInputChangeACB}
+					onAlternativesSearch={onAlternativesSearchACB}
+				/>
+				{promiseNoData(component.promiseState) || (
+					<Co2VisualizationView
+						results={parseActivityData(component.promiseState.data)}
+						onSelectTransport={onSelectTransportACB}
+					/>
+				)}
+				<TripView overallCo2={component.userModel.tripModel.overallCo2} />
+			</div>
+		);
+	},
 };
 
 function parseActivityData(data) {
-  function extractDetailsCB(activity) {
-    return [activity.emission_factor.category, activity.co2e];
-  }
-  let content = data.map(extractDetailsCB);
+	function extractDetailsCB(activity) {
+		return [activity.emission_factor.category, activity.co2e];
+	}
+	let content = data.map(extractDetailsCB);
 
-  return content;
+	return content;
 }
 
 export default AddTransportation;

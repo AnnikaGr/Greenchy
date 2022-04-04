@@ -1,13 +1,11 @@
 import firebase from 'firebase/compat/app'
 import firebaseConfig from "./firebaseConfig"
-import {observeAuthStatus} from "./firebaseAuthModel"
-import UserModel from "./userModel"
-import tripModel from './tripModel'
+import { observeAuthStatus } from './firebaseModel'
+import UserModel from "./models/userModel"
 import { createApp } from 'vue'
 import NavBar from './presenters/navBarPresenter'
 import {router, addAuthRequirementToRouting} from "./router.js"
 import { RouterView } from 'vue-router'
-import addTransportationPresenter from './presenters/addTransportationPresenter'
 
 
 firebase.initializeApp(firebaseConfig)
@@ -15,8 +13,7 @@ firebase.initializeApp(firebaseConfig)
 const App = {
     data(){
         return {
-            userModel: new UserModel(),
-            tripModel: new tripModel()
+            userModel: new UserModel()
         }
     },
     created(){
