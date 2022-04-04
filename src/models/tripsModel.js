@@ -5,11 +5,14 @@ class TripsModel {
     }
 
     getTrip(id) {
-        return this.trips.find(trip => trip.id === id)
+        if (this.trips){
+            return this.trips.find(trip => trip.id === id)
+        } else {
+            return null
+        }
     }
 
     addTrip(trip) {
-        trip.notifyObservers = this.notifyObservers
         this.trips = [...this.trips, trip]
         this.notifyObservers({addTrip: trip})
     }
@@ -19,6 +22,27 @@ class TripsModel {
         if (updatedTrips.length !== this.trips.length) {
             this.trips = updatedTrips
             this.notifyObservers({removeTrip: trip})
+        }
+    }
+
+    addTransportation(tripId, distance, modeOfTransport, co2) {
+        const trip = this.getTrip(tripId)
+        const transportation = {
+            id: Date.now(),
+            distance,
+            modeOfTransport,
+            co2
+        }
+        trip.transportations = [...trip.transportations, transportation]
+        this.notifyObservers({tripId: trip.id, addTransportation: transportation})
+    }
+
+    removeTransportation(tripId, transportation) {
+        const trip = this.getTrip(tripId)
+        const updatedTransportations = trip.transportations.filter((transp) => transp.id !== transportation.id)
+        if (updatedTransportations.length !== trip.transportations.length) {
+            trip.transportations = updatedTransportations
+            this.notifyObservers({tripId: trip.id, removeTransportation: transportation})
         }
     }
 

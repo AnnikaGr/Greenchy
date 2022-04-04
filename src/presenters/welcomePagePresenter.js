@@ -1,7 +1,9 @@
 import WelcomePageView from "@/views/welcomePageView";
 
-function WelcomePage(props){
-    return <WelcomePageView/>;
+const WelcomePage = {
+    render() {
+        return <WelcomePageView/>
+    }
 }
 
 export default WelcomePage;

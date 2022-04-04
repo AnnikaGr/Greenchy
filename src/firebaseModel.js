@@ -4,6 +4,7 @@ import "firebase/compat/database"
 import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut} from 'firebase/auth'
 import { logError } from "./utils";
 import TripsModel from "./models/tripsModel";
+import Trip from "./models/trip";
 
 // Database
 
@@ -15,13 +16,14 @@ function updateFirebaseFromModel(userModel) {
 
         if (payload) {
             if (payload.addTrip) {
-                firebase.database().ref(REF + "/trips/" + payload.addTrip.id).set(payload.addTrip)
+                const {notifyObservers, ...newTrip} = payload.addTrip
+                firebase.database().ref(REF + "/trips/" + payload.addTrip.id).set(newTrip)
             }
             if (payload.removeTrip) {
                 firebase.database().ref(REF + "/trips/" + payload.removeTrip.id).set(null)
             }
-            if (payload.trip){
-                const TRIP_REF = REF + "/trips/" + payload.trip.id 
+            if (payload.tripId){
+                const TRIP_REF = REF + "/trips/" + payload.tripId
                 if (payload.addTransportation) {
                     firebase.database().ref(TRIP_REF + "/transportations/" + payload.addTransportation.id).set(payload.addTransportation)
                 }
@@ -39,12 +41,12 @@ function updateModelFromFirebase(userModel) {
 	const REF = userModel.uid
 
     firebase.database().ref(REF + "/trips").on("child_added", (data) => {
-        if (!userModel.tripsModel.trips.find((trip) => trip.id === +data.key)) {
+        if (!userModel.tripsModel.getTrip(+data.key)) {
             userModel.tripsModel.addTrip(data.val())
         }
     })
     firebase.database().ref(REF + "/trips").on("child_removed", (data) => {
-        const tripToRemove = userModel.tripsModel.trips.find((trip) => trip.id === +data.key)
+        const tripToRemove = userModel.tripsModel.getTrip(+data.key)
         if (tripToRemove) {
             userModel.tripsModel.removeTrip(tripToRemove)
         }
@@ -52,8 +54,8 @@ function updateModelFromFirebase(userModel) {
 
     firebase.database().ref(REF + "/trips").once("value").then(data => {
         data.forEach(firebaseTrip => {
-            const REF_TRIP = REF + "/trips/" + firebaseTrip.id
-            const trip = userModel.tripsModel.getTrip(firebaseTrip.id)
+            const REF_TRIP = REF + "/trips/" + +firebaseTrip.key
+            const trip = userModel.tripsModel.getTrip(+firebaseTrip.key)
 
             firebase.database().ref(REF_TRIP + "/transportations").on("child_added", (data) => {
                 if (!trip.transportations.find((transp) => transp.id === +data.key)) {
@@ -63,7 +65,7 @@ function updateModelFromFirebase(userModel) {
             firebase.database().ref(REF_TRIP + "/transportations").once("child_removed", (data) => {
                 const transportationToRemove = trip.transportations.find(transp => transp.id === +data.key)
                 if (transportationToRemove) {
-                    trip.removeTransportation(transportationToRemove)
+                    userModel.tripsModel.removeTransportation(trip.id, transportationToRemove)
                 }
             })
         })
@@ -87,7 +89,19 @@ function unsubscribeFromFirebaseUpdates(userModel) {
 function firebaseModelPromise(userModel) {
 	const REF = userModel.uid + "/trips"
     return firebase.database().ref(REF).once("value")
-		.then(data => new TripsModel(data.val()));
+		.then(buildModel);
+
+    function buildModel(data) {
+        const tripsModel = new TripsModel()
+        data.forEach(trip => {
+            const transportations = []
+            for (const prop in trip.val().transportations) {
+                transportations.push(trip.val().transportations[prop])
+            }
+            tripsModel.addTrip(new Trip(trip.val().name, transportations, trip.val().id))
+        })
+        userModel.tripsModel = tripsModel
+    }
 }
 
 // Authentication

@@ -1,7 +1,6 @@
 import "charts.css";
 
 function TripView(props) {
-    console.log(props)
     const style = {
         '--start': 0.0,
         '--size': props.overallCo2/100,

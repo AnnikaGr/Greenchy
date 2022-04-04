@@ -45,7 +45,7 @@ const AuthenticationView = {
                         </div>
                     </div>
                 </div>
-                <router-link to="/" class="modal-close is-large" aria-label="close"></router-link>
+                <router-link to="/trips" class="modal-close is-large" aria-label="close"></router-link>
             </div>
         );
     }

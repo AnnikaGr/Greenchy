@@ -12,7 +12,7 @@ import animate from "../views/animation.js";
 
 
 const AddTransportation = {
-	props: ["trip"],
+	props: ["userModel"],
 	data() {
 		return {
 			searchText: "",
@@ -22,9 +22,11 @@ const AddTransportation = {
 	updated() {
 		animate();
 	},
+	created() {
+		this.trip = this.userModel.tripsModel.getTrip(+this.$route.params.tripId)
+	},
 	render() {
 		const component = this;
-		console.log(component.model)
 		function onSearchInputChangeACB(value) {
 			component.searchText = value;
 		}
@@ -46,14 +48,12 @@ const AddTransportation = {
 		}
 
 		function onSelectTransportACB(transportSelection) {
-			console.log(transportSelection);
-			component.userModel.tripModel.setModeOfTransport(transportSelection[0]);
-			component.userModel.tripModel.addOverallCo2(transportSelection[1]);
-			console.log(component.userModel.tripModel);
+			component.userModel.tripsModel.addTransportation(component.trip.id, parseFloat(component.searchText), transportSelection[0], transportSelection[1])
 		}
 
 		return (
 			<div>
+				<TripView overallCo2={component.trip.getOverallCo2()} />
 				<SearchTransportationView
 					onSearchInputChange={onSearchInputChangeACB}
 					onAlternativesSearch={onAlternativesSearchACB}
@@ -64,7 +64,6 @@ const AddTransportation = {
 						onSelectTransport={onSelectTransportACB}
 					/>
 				)}
-				<TripView overallCo2={component.userModel.tripModel.overallCo2} />
 			</div>
 		);
 	},
