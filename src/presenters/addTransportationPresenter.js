@@ -8,6 +8,7 @@ import {
   getEmissionsForRailTravel,
 } from "../emissionsSource.js";
 import resolvePromise from "../resolvePromise.js";
+import animate from "../views/animation.js";
 import tripModel from "@/tripModel.js";
 
 
@@ -21,7 +22,9 @@ const AddTransportation = {
       
     };
   },
-  created() {},
+  updated() {
+    animate();
+  },
   render() {
     const component = this;
     console.log(component.model)
