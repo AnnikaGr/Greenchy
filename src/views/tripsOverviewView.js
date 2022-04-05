@@ -2,7 +2,7 @@
 function TripsOverviewView(props) {
         return <div>
             <div class="title is-1 block">All of your Trips :)</div>
-            <div class="button block" onClick={() => props.tripAdded("test")}>Add new Trip</div>
+            <div class="button block" onClick={() => props.tripAdded("New Trip")}>Add new Trip</div>
             <div class="tile is-ancestor block">
                 {props.tripsModel.trips.map(renderTripTile)}
             </div>
