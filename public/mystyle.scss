@@ -1,0 +1,25 @@
+// 1. Import the initial variables
+@import "../sass/utilities/initial-variables";
+@import "../sass/utilities/functions";
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+
+// 2. Set your own initial variables
+// Update blue
+$green: #B5C755;
+$green-invert: #fff;
+// Add a serif family
+$family-serif: "Merriweather", "Georgia", serif;
+
+// 3. Set the derived variables
+// Use the new blue as the primary color
+$primary: $green;
+$primary-invert: $green-invert;
+// Use the existing orange as the danger color
+$danger: $orange;
+// Use the new serif family
+$family-primary: $family-serif;
+
+$colors: map-merge($colors, $addColors);
+
+// 6. Import the rest of Bulma
+@import "../bulma";
