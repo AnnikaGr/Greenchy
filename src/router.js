@@ -6,6 +6,10 @@ import WelcomePage from './presenters/welcomePagePresenter.js'
 
 const routes = [
     {
+        path: '/',
+        redirect: '/welcome',
+    },
+    {
         path: '/login',
         name: 'login',
         component: Authentication,

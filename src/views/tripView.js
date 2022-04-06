@@ -18,7 +18,7 @@ function TripView(props) {
                     <caption> Overall Co2 Emission </caption>
                     <tbody>
                             <tr>
-                            <td style={style} > <span class="data"> {props.overallCo2.toFixed(4)} </span> </td>
+                            <td style={style} > <span class="data"> {props.overallCo2.toFixed(4)} kg Co2 </span> </td>
                             </tr>
                         </tbody>
                     </table>                
@@ -28,7 +28,6 @@ function TripView(props) {
                     <a href="#" class="card-footer-item">Edit</a>
                     <a href="#" class="card-footer-item">Delete</a>
                  </footer>
-
                 </div>
         </div>
     );
