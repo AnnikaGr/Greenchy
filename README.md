@@ -4,12 +4,13 @@ Hi! **Greenchy** is your first sustainable trip planner. If you want to learn ab
 
 ## What have we done
 
-For the time being we have developed our first MVP in which you can start calculating how much CO2 your spend in distance. Simply introducing the amount of kilometers, you will have different options such as plane, train or bus to choose which one is best suitable for you order by less pollutant.
-After seen the different options, you just have to press in the plus button to add that option to your trip.
+For the time being we have developed our first MVP in which you can start calculating how much CO2 your spend during a trip with multiple journeys. You can create multiple trips and edit them individually. Simply after inputting the amount of kilometers, you will have different options such as plane, train or bus to choose from.
+After seeing the different options, you just have to press the plus button to add that option to your trip.
+The trips are persisted and connected to your account for which you can sign up on our Welcome Page.
 
 ## What we still plan to do
 
-We plan to keep adding features in terms of less pollution accommodations and meals options. At the end you will have a view of your CO2 spend in your whole trip. You will have a record of each trip and stimate your annual CO2 spending.
+We plan to keep adding features in terms of less pollution by accommodations and meal options during your trip. At the end you will have a view of your CO2 spend in your whole trip. You will have a record of each trip and an estimate of how much of your annual CO2 budget you used for this trip. We also want to move from a simple distance input to a input via map and route planning to make it more intuitive. Finally the goal until the end of the project is now to make the App more beautiful and easier to use.
 
 ## Project file structure
 
@@ -19,13 +20,13 @@ We plan to keep adding features in terms of less pollution accommodations and me
 
 |                |Description                                                   
 |----------------|-------------------------------
-|emissionsSource|`Retriew data from Climatiq API`
+|emissionsSource|`Retrieve data from Climatiq API`
 |firebaseModel|`Firebase connection for authentication and persistance`
 |main |`Initialize the app`
 |router|`Definition of routes for Vue Router`
 |utils|`Utility functions`
 
-- Model: Layer for storing data. It is responsible for handling the domain logic(real-world business rules) and communication with the database and network layers.
+- Model: Layer for storing data. It is responsible for handling the domain logic(real-world business rules).
 
 |                |Description                                                   
 |----------------|-------------------------------
@@ -33,7 +34,7 @@ We plan to keep adding features in terms of less pollution accommodations and me
 |tripsModel	|`Contains a collection and logic of trips`
 |trip	|`Contains information about a single trip`
 
-- Views: UI(User Interface) layer. It provides the visualization of the data and keep a track of the user’s action in order to notify the Presenter.
+- Views: UI(User Interface) layer. It provides the visualization of the data and keep a track of the user’s action in order to notify the Presenters.
 
 |                |Description                                                   
 |----------------|-------------------------------
