@@ -12,11 +12,11 @@ const Authentication = {
         return <AuthenticationView isSignUp={this.isSignUp} signIn={signIn} signUp={signUp} error={this.error}/>
 
         function signIn(credentials) {
-            signInWithFirebase(credentials).then(() => this.$router.push("/")).catch((error) => this.error.message = error.message)
+            signInWithFirebase(credentials).then(() => this.$router.push("/trips")).catch((error) => this.error.message = error.message)
         }
 
         function signUp(credentials) {
-            signUpWithFirebase(credentials).then(() => this.$router.push("/")).catch((error) => this.error.message = error.message)
+            signUpWithFirebase(credentials).then(() => this.$router.push("/trips")).catch((error) => this.error.message = error.message)
         }
     }
 }
