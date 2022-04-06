@@ -49,7 +49,7 @@ function getEmissionsForAirTravel(distance) {
 
 function getEmissionsForRailTravel(distance) {
   return getEmissionsByFactorAndParameters({
-    emission_factor: "passenger_train-route_type_commuter_rail-fuel_source_na",
+    emission_factor: "passenger_train-route_type_international_rail-fuel_source_na",
     parameters: {
       distance: distance,
       distance_unit: "km",

@@ -25,24 +25,29 @@ class TripsModel {
         }
     }
 
-    addTransportation(tripId, distance, modeOfTransport, co2) {
+    addTransportation(tripId, distance, passengers, modeOfTransport, co2) {
         const trip = this.getTrip(tripId)
-        const transportation = {
-            id: Date.now(),
-            distance,
-            modeOfTransport,
-            co2
+        if (trip) {
+            const transportation = {
+                id: Date.now(),
+                distance,
+                passengers,
+                modeOfTransport,
+                co2
+            }
+            trip.transportations = [...trip.transportations, transportation]
+            this.notifyObservers({tripId: trip.id, addTransportation: transportation})
         }
-        trip.transportations = [...trip.transportations, transportation]
-        this.notifyObservers({tripId: trip.id, addTransportation: transportation})
     }
 
     removeTransportation(tripId, transportation) {
         const trip = this.getTrip(tripId)
-        const updatedTransportations = trip.transportations.filter((transp) => transp.id !== transportation.id)
-        if (updatedTransportations.length !== trip.transportations.length) {
-            trip.transportations = updatedTransportations
-            this.notifyObservers({tripId: trip.id, removeTransportation: transportation})
+        if (trip) {
+            const updatedTransportations = trip.transportations.filter((transp) => transp.id !== transportation.id)
+            if (updatedTransportations.length !== trip.transportations.length) {
+                trip.transportations = updatedTransportations
+                this.notifyObservers({tripId: trip.id, removeTransportation: transportation})
+            }
         }
     }
 

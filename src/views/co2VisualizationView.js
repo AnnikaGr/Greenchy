@@ -30,7 +30,7 @@ function renderData(co2_data, activity_worst_emissions, props) {
           + Add to trip
         </button>{" "}
         <br />
-        <text class="subtitle is-7">{activity_co2_emissions[1]} kg Co2</text>
+        <text class="subtitle is-7">{activity_co2_emissions[1].toFixed(4)} kg Co2</text>
         <br />
         <svg
           class="bar"
