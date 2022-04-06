@@ -11,7 +11,7 @@ function NavBarView(props) {
                             <nav class="navbar" role="navigation" aria-label="main navigation">
                             <div class="navbar-brand">
                                 
-                                <router-link class="navbar-item" to="/">
+                                <router-link class="navbar-item" to="/welcome">
                                 <img src="https://drive.google.com/uc?id=1qOlFyxNasCEqDCBQsUyhMhdEYN2NDwBY" ></img>
                                 </router-link>
 
@@ -24,8 +24,8 @@ function NavBarView(props) {
 
                             <div class="navbar-menu" id='navItems'>
                                 <div class="navbar-start">
-                                    <router-link to="/" class="navbar-item">
-                                        Home
+                                    <router-link to="/trips" class="navbar-item">
+                                        Trips
                                     </router-link>
                                 </div>
 

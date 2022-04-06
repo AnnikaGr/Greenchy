@@ -6,3 +6,5 @@ package-lock.json
 .vs
 firebaseConfig.js
 apiConfig.js
+.firebase
+ourbulma.css

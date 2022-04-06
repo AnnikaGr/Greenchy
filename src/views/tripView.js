@@ -1,7 +1,6 @@
 import "charts.css";
 
-function tripView(props) {
-    console.log(props)
+function TripView(props) {
     const style = {
         '--start': 0.0,
         '--size': props.overallCo2/100,
@@ -14,12 +13,12 @@ function tripView(props) {
                         <h1>Overall Co2 Emission</h1>
                     </div>
                 <div class="card-content">
-                    <h1>{props.overallCo2}</h1>
+                    <h1>{props.overallCo2.toFixed(4)}</h1>
                     <table class="charts-css area" style={{height: '200px', maxWidth: '400px', margin:' 0 auto'}}>
                     <caption> Overall Co2 Emission </caption>
                     <tbody>
                             <tr>
-                            <td style={style} > <span class="data"> {props.overallCo2} </span> </td>
+                            <td style={style} > <span class="data"> {props.overallCo2.toFixed(4)} kg Co2 </span> </td>
                             </tr>
                         </tbody>
                     </table>                
@@ -29,10 +28,9 @@ function tripView(props) {
                     <a href="#" class="card-footer-item">Edit</a>
                     <a href="#" class="card-footer-item">Delete</a>
                  </footer>
-
                 </div>
         </div>
     );
   }
   
-  export default tripView;
+  export default TripView;

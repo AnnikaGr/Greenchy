@@ -1,10 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AddTransportation from './presenters/addTransportationPresenter.js'
 import Authentication from './presenters/authenticationPresenter.js'
+import TripsOverview from './presenters/tripsOverviewPresenter.js'
 import WelcomePage from './presenters/welcomePagePresenter.js'
-import tripModel from './tripModel.js'
 
 const routes = [
+    {
+        path: '/',
+        redirect: '/welcome',
+    },
     {
         path: '/login',
         name: 'login',
@@ -20,18 +24,44 @@ const routes = [
     {
         path: '/welcome',
         name: 'welcomePage',
+        displayName: 'welcomePage',
         component: WelcomePage,
         meta: { requiresAuth: false }
 
     },
     {
-        path: '/',
-        name: 'addTransportation',
+        path: '/trips',
+        name: 'tripsOverview',
+        component: TripsOverview,
+        meta: { requiresAuth: true },
+        props: true
+    },
+    {
+        path: '/trips/:tripId',
+        name: 'trip',
         component: AddTransportation,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: true },
+        props: true
     }
 ]
 
 const router = createRouter({ history: createWebHistory(), routes })
 
-export default router
+function addAuthRequirementToRouting(userModel) {
+    router.beforeEach((to, from, next) => { 
+        if (to.matched.some(record => record.meta.requiresAuth)) { 
+            // this route requires condition to be accessed
+            // if not, redirect to home page. 
+            if (userModel.uid === null) { 
+                next({ path: '/welcome'}) 
+            } else { 
+                next() 
+            } 
+        } else { 
+            next() // make sure to always call next()! 
+        } 
+    }) 
+}
+
+
+export {router, addAuthRequirementToRouting}

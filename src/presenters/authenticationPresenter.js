@@ -1,5 +1,5 @@
 import AuthenticationView from "@/views/authenticationView"
-import { signInWithFirebase, signUpWithFirebase } from "@/firebaseAuthModel"
+import { signInWithFirebase, signUpWithFirebase} from "@/firebaseModel"
 
 const Authentication = {
     props: ["isSignUp"],
