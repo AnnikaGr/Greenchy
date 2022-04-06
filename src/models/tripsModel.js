@@ -25,12 +25,13 @@ class TripsModel {
         }
     }
 
-    addTransportation(tripId, distance, modeOfTransport, co2) {
+    addTransportation(tripId, distance, passengers, modeOfTransport, co2) {
         const trip = this.getTrip(tripId)
         if (trip) {
             const transportation = {
                 id: Date.now(),
                 distance,
+                passengers,
                 modeOfTransport,
                 co2
             }

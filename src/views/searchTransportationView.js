@@ -1,35 +1,57 @@
 function SearchTransportationView(props) {
-  function searchChangeACB(event) {
-    props.onSearchInputChange(event.target.value);
-  }
+	function distanceChangeACB(event) {
+		props.onDistanceInputChange(event.target.value);
+	}
 
-  function getAlternatives() {
-    props.onAlternativesSearch();
-  }
+	function passengerChangeACB(event) {
+		props.onPassengersInputChange(event.target.value);
+	}
 
-  return (
-    <div class="searchForm container is-fluid box">
-      <h2 class="title is-4"> Add transportation </h2>
-      <label class="subtitle is-5" for="search-input">
-        Travel distance
-      </label>
+	function getAlternatives() {
+		props.onAlternativesSearch();
+	}
 
-      <div class="input-field-wrapper">
-        <input
-          class="input block"
-          type="text"
-          id="search-input"
-          name="search-input"
-          onChange={searchChangeACB}
-        />
-        <div class="placeholder subtitle is-6">km</div>
-      </div>
+	return (
+		<div class="searchForm container is-fluid box">
 
-      <button onClick={getAlternatives} class="button is-primary">
-        Compare alternatives
-      </button>
-    </div>
-  );
+			<h2 class="title is-4"> Add transportation </h2>
+			<div class="columns">
+				<div class="column">
+					<label class="subtitle is-5" for="distance-input">
+						Travel distance
+					</label>
+					<div class="input-field-wrapper">
+						<input
+							class="input block"
+							type="number"
+							id="distance-input"
+							name="distance-input"
+							onChange={distanceChangeACB}
+						/>
+						<div class="placeholder subtitle is-6">km</div>
+					</div>
+				</div>
+				<div class="column">
+					<label class="subtitle is-5" for="passengers-input">
+						Passengers
+					</label>
+					<div class="input-field-wrapper">
+						<input
+							class="input block"
+							type="number"
+							min="1"
+							id="passengers-input"
+							name="passengers-input"
+							onChange={passengerChangeACB}
+						/>
+					</div>
+				</div>
+			</div>
+			<button onClick={getAlternatives} class="button is-primary">
+				Compare alternatives
+			</button>
+		</div>
+	);
 }
 
 export default SearchTransportationView;
