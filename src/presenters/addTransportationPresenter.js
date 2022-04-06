@@ -7,7 +7,7 @@ import {
 	getEmissionsForAirTravel,
 	getEmissionsForRailTravel,
 } from "../emissionsSource.js";
-import resolvePromise from "../resolvePromise.js";
+import { resolvePromise } from "../utils.js"
 import animate from "../views/animation.js";
 
 
