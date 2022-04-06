@@ -6,7 +6,7 @@
 $green: #289431;
 $green-invert: #fff;
 // Add a serif family
-$family-serif: "Merriweather", "Georgia", serif;
+//$family-serif: "Merriweather", "Georgia", serif;
 
 // 3. Set the derived variables
 $primary: $green;
@@ -14,7 +14,7 @@ $primary-invert: $green-invert;
 // Use the existing orange as the danger color
 $danger: $orange;
 // Use the new serif family
-$family-primary: $family-serif;
+//$family-primary: $family-serif;
 
 // 6. Import the rest of Bulma
 @import "../node_modules/bulma/bulma.sass";
