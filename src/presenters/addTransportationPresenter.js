@@ -72,7 +72,7 @@ const AddTransportation = {
 		return (
 			<div class="container is-fluid">
 				<h1 class="title">{this.trip.name}</h1>
-				<div class="columns">
+				<div class="columns is-vcentered">
 
 					<div class="column">
 						<SearchTransportationView
