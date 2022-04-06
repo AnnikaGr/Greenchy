@@ -20,10 +20,14 @@ We plan to keep adding features in terms of less pollution accommodations and me
 
 |                |Description                                                   
 |----------------|-------------------------------
-|addTransportationPresenter|`'Isn't this fun?'`            
-|authenticationPresenter|`"Isn't this fun?"`         
-|navBarPresenter          |`-- is en-dash, --- is em-dash`
-|welcomePagePresenter|`'Isn't this fun?'`            
+|emissionsSource|`'Isn't this fun?'`            
+|firebaseAuthModel|`"Isn't this fun?"`         
+|main          |`-- is en-dash, --- is em-dash`
+|resolvePromise|`'Isn't this fun?'`            
+|router|`"Isn't this fun?"`         
+|tripModel          |`-- is en-dash, --- is em-dash`
+|userModel|`'Isn't this fun?'`            
+|utils|`"Isn't this fun?"`  
         
 
 - Views: UI(User Interface) layer. It provides the visualization of the data and keep a track of the user’s action in order to notify the Presenter.
@@ -38,43 +42,20 @@ We plan to keep adding features in terms of less pollution accommodations and me
 |tripView          |`-- is en-dash, --- is em-dash`
 |welcomePageView|`'Isn't this fun?'`            
 
-- Presenters: Fetch the data from the model and applies the UI logic to decide what to display. It manages the state of the View and takes actions according to the user’s input notification from the View.
+- Presenters: Fetch the data from the model and applies the UI logic to decide what to display. It manages the state of the View and takes actions according to the user’s input notification from the View. 
 
 |                |Description                                                   
 |----------------|-------------------------------
-|emissionsSource|`'Isn't this fun?'`            
-|firebaseAuthModel|`"Isn't this fun?"`         
-|main          |`-- is en-dash, --- is em-dash`
-|resolvePromise|`'Isn't this fun?'`            
-|router|`"Isn't this fun?"`         
-|tripModel          |`-- is en-dash, --- is em-dash`
-|userModel|`'Isn't this fun?'`            
-|utils|`"Isn't this fun?"`   
-
-
+|addTransportationPresenter|`'Isn't this fun?'`            
+|authenticationPresenter|`"Isn't this fun?"`         
+|navBarPresenter          |`-- is en-dash, --- is em-dash`
+|welcomePagePresenter|`'Isn't this fun?'` 
 
 ## UML diagrams
 
-You can render UML diagrams using [Mermaid](https://mermaidjs.github.io/). For example, this will produce a sequence diagram:
-
-```mermaid
-sequenceDiagram
-Alice ->> Bob: Hello Bob, how are you?
-Bob-->>John: How about you John?
-Bob--x Alice: I am good thanks!
-Bob-x John: I am good thanks!
-Note right of John: Bob thinks a long<br/>long time, so long<br/>that the text does<br/>not fit on a row.
-
-Bob-->Alice: Checking with John...
-Alice->John: Yes... John, how are you?
-```
-
-And this will produce a flow chart:
-
 ```mermaid
 graph LR
-A[Square Rect] -- Link text --> B((Circle))
-A --> C(Round Rect)
-B --> D{Rhombus}
-C --> D
+A[Greenchy HomePage] --> B((trip))
+B -- onClick --> D[Greenchy Add Transportation km]
+
 ```
