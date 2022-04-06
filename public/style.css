@@ -9,13 +9,13 @@
 
 html {
     height: 100%;
-    overflow: hidden;
+
 }
 
 .welcome-page-wrapper {
     height: 100vh;
     background: radial-gradient(ellipse at center, #b5c755 0%, #258a2e 70%);
-
+    overflow: hidden;
 }
 
 /*-----Travel Distance Input Field*/
