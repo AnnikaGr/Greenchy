@@ -53,7 +53,7 @@ const AddTransportation = {
 
 		return (
 			<div>
-				<TripView overallCo2={component.trip.getOverallCo2()} />
+				<TripView overallCo2={component.trip.getOverallCo2()} transportations={component.trip.transportations} />
 				<SearchTransportationView
 					onSearchInputChange={onSearchInputChangeACB}
 					onAlternativesSearch={onAlternativesSearchACB}

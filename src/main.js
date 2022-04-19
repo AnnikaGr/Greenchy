@@ -6,6 +6,7 @@ import { createApp } from 'vue'
 import NavBar from './presenters/navBarPresenter'
 import {router, addAuthRequirementToRouting} from "./router.js"
 import { RouterView } from 'vue-router'
+import VueApexCharts from "vue3-apexcharts";
 
 
 firebase.initializeApp(firebaseConfig)
@@ -30,4 +31,4 @@ const App = {
     }
 }
     
-createApp(App).use(router).mount('#app')
+createApp(App).use(router).use(VueApexCharts).mount('#app')
