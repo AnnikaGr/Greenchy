@@ -1,21 +1,18 @@
 import "charts.css";
-import VueApexCharts from 'vue-apexcharts'
 
 
 function TripView(props) {
 
 
-    function renderPieChartABC(addedTransport){
-        console.log(addedTransport)
+    function renderPieChartABC(addedTransports){
+    console.log(addedTransports)
         var labels = [];
         var series = [];
-        addedTransport.forEach(element => {
+        addedTransports.forEach(element => {
             console.log(element)
             labels.push('' + element.modeOfTransport + ' ' + element.distance + ' km');
             series.push(element.co2)
         });
-        console.log(labels)
-        console.log(series)
         var options = {
             labels: labels
         }
@@ -32,14 +29,14 @@ function TripView(props) {
     return (
         
       <div>
-
+          {console.log(props)}
           <h1>Your trip</h1>
           <div class="card">
                     <div class="card-header">
-                        <h1>Overall Co2 Emission: {props.overallCo2.toFixed(3)}</h1>
+                       
                     </div>
                 <div class="card-content">
-                     {renderPieChartABC(props.transportations)}
+                     {renderPieChartABC(props.trip.transportations)}
                 </div>
                 
                 </div>

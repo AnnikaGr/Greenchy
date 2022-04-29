@@ -82,7 +82,7 @@ const AddTransportation = {
 						/>
 					</div>
 					<div class="column is-one-half">
-						<TripView overallCo2={component.trip.getOverallCo2()} />
+						<TripView trip={component.trip} />
 					</div> 
 				</div>
 				{promiseNoData(component.promiseState) || (
