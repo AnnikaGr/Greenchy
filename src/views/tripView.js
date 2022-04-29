@@ -5,7 +5,6 @@ function TripView(props) {
 
 
     function renderPieChartABC(addedTransports){
-    console.log(addedTransports)
         var labels = [];
         var series = [];
         addedTransports.forEach(element => {
@@ -29,11 +28,10 @@ function TripView(props) {
     return (
         
       <div>
-          {console.log(props)}
           <h1>Your trip</h1>
           <div class="card">
                     <div class="card-header">
-                       
+                       <h1>Overall Co2: </h1>
                     </div>
                 <div class="card-content">
                      {renderPieChartABC(props.trip.transportations)}
