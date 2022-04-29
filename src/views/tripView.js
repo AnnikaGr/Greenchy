@@ -1,24 +1,45 @@
 import "charts.css";
+import VueApexCharts from 'vue-apexcharts'
+
 
 function TripView(props) {
-    const style = {
-        '--start': 0.0,
-        '--size': props.overallCo2/100,
+
+
+    function renderPieChartABC(addedTransport){
+        console.log(addedTransport)
+        var labels = [];
+        var series = [];
+        addedTransport.forEach(element => {
+            console.log(element)
+            labels.push('' + element.modeOfTransport + ' ' + element.distance + ' km');
+            series.push(element.co2)
+        });
+        console.log(labels)
+        console.log(series)
+        var options = {
+            labels: labels
+        }
+
+        return(
+            <apexchart width="500" type="donut" options={options} series={series}></apexchart> 
+        )
+ 
     }
+
+
+
+
     return (
+        
       <div>
-          <div class="box">
-                <h2 class="title is-4">Overall Co2 Emission</h2>
-                <div>
-                    <h1>{props.overallCo2.toFixed(4)} kgCo2 </h1>
-                    <table class="charts-css area" style={{height: '200px', maxWidth: '400px', margin:' 0 auto'}}>
-                    <caption> Overall Co2 Emission </caption>
-                    <tbody>
-                            <tr>
-                            <td style={style} > <span class="data"> {props.overallCo2.toFixed(2)} kg Co2 </span> </td>
-                            </tr>
-                        </tbody>
-                    </table>                
+
+          <h1>Your trip</h1>
+          <div class="card">
+                    <div class="card-header">
+                        <h1>Overall Co2 Emission: {props.overallCo2.toFixed(3)}</h1>
+                    </div>
+                <div class="card-content">
+                     {renderPieChartABC(props.transportations)}
                 </div>
                 
                 </div>
