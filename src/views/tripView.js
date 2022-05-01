@@ -7,17 +7,29 @@ function TripView(props) {
     function renderPieChartABC(addedTransports){
         var labels = [];
         var series = [];
+        var transports = [];
+
         addedTransports.forEach(element => {
-            console.log(element)
-            labels.push('' + element.modeOfTransport + ' ' + element.distance + ' km');
-            series.push(element.co2)
+            labels.push('' + element.modeOfTransport + ' ' + element.distance + ' km' + ' [X]' );
+            series.push(element.co2);
+            transports.push(element);
         });
         var options = {
+                chart: {
+                    type: 'donut',
+                    events: {
+                        legendClick: (config) => {
+                            props.onTransportDeletion(transports[config.dataPointIndex]);
+                        }
+                    },
+                },
             labels: labels
-        }
+    }
+    
+        
 
         return(
-            <apexchart width="500" type="donut" options={options} series={series}></apexchart> 
+            <apexchart width="500"  options={options} series={series}></apexchart> 
         )
  
     }
@@ -36,6 +48,7 @@ function TripView(props) {
                 <div class="card-content">
                      {renderPieChartABC(props.trip.transportations)}
                 </div>
+                
                 
                 </div>
         </div>

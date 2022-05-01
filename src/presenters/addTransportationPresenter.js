@@ -69,6 +69,11 @@ const AddTransportation = {
 			return content;
 		}
 
+		function onTransportDeletionABC(transport){
+			var index = component.trip.transportations.indexOf(transport);
+			component.trip.transportations.splice(index, 1);
+		}
+
 		return (
 			<div class="container is-fluid">
 				<h1 class="title">{this.trip.name}</h1>
@@ -82,7 +87,7 @@ const AddTransportation = {
 						/>
 					</div>
 					<div class="column is-one-half">
-						<TripView trip={component.trip} />
+						<TripView trip={component.trip} onTransportDeletion={onTransportDeletionABC} />
 					</div> 
 				</div>
 				{promiseNoData(component.promiseState) || (
