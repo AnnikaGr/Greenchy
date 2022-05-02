@@ -5,23 +5,45 @@ function TripView(props) {
     function renderPieChartABC(addedTransports){
         var labels = [];
         var series = [];
+        var transports = [];
+
         addedTransports.forEach(element => {
-            console.log(element)
-            labels.push('' + element.modeOfTransport + ' ' + element.distance + ' km');
-            series.push(element.co2)
+            labels.push( '' + element.modeOfTransport + ' ' + element.co2.toFixed(1) + ' kg' + '<button style="font-size: 10px; margin-left: 5px;">' + 'X' + '</button>' );
+            series.push(element.co2);
+            transports.push(element);
         });
         var options = {
-            labels: labels
-        }
+            plotOptions: {
+                pie: {
+                  expandOnClick: false
+                }
+              },
+                chart: {
+                    type: 'donut',
+                    events: {
+                        legendClick: (seriesIndex, chartContext, config) => {
+                            props.onTransportDeletion(transports[chartContext], props.trip.id);
+                        }
+                    },
+                },
+                tooltip: {
+                    enabled: false
+                },
+            labels: labels,
+            
+    }
         return(
-            <apexchart width="500" type="donut" options={options} series={series}></apexchart> 
+            <apexchart width="500"  options={options} series={series}></apexchart> 
         )
+    }
+    function calculateOverallCo2CB(sum, val){
+        return sum + val.co2
     }
     if (props.trip.transportations.length > 0) {
         return (
             <div>
                 <div class="card box">
-                    <h2 class="title is-4"> Overall Co2 </h2>
+                    <h2 class="title is-4">Overall Co2: <b> {props.trip.transportations.reduce(calculateOverallCo2CB, 0).toFixed(2)}</b> kg Co2 </h2>
                     <div class="card-content">
                         {renderPieChartABC(props.trip.transportations)}
                     </div>
@@ -33,5 +55,5 @@ function TripView(props) {
         );
     }
   }
-  
+
   export default TripView;

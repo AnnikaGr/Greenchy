@@ -57,6 +57,10 @@ const AddTransportation = {
 			component.promiseState = {}
 		}
 
+		function onTransportDeletionABC(transport, id){
+			component.userModel.tripsModel.removeTransportation(id, transport )
+		}
+
 		function parseActivityData(data, passengers) {
 			function extractDetailsCB(activity) {
 				if (activity.emission_factor.category === "Road Travel") {
@@ -70,6 +74,7 @@ const AddTransportation = {
 			return content;
 		}
 
+
 		return (
 			<div class="container is-fluid">
 				<h1 class="title">{this.trip.name}</h1>
@@ -82,7 +87,7 @@ const AddTransportation = {
 						/>
 					</div>
 					<div class="column is-one-half">
-						<TripView trip={component.trip} />
+						<TripView trip={component.trip} onTransportDeletion={onTransportDeletionABC} />
 					</div> 
 				</div>
 				{promiseNoData(component.promiseState) || (
