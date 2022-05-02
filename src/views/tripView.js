@@ -1,4 +1,5 @@
 import "charts.css";
+import { h } from "vue";
 
 
 function TripView(props) {
@@ -10,7 +11,7 @@ function TripView(props) {
         var transports = [];
 
         addedTransports.forEach(element => {
-            labels.push('' + element.modeOfTransport + ' ' + element.distance + ' km' + ' [X]' );
+            labels.push( '' + element.modeOfTransport + ' ' + element.co2.toFixed(1) + ' kg' + '<button style="font-size: 10px; float: right; margin-left: 5px;">' + 'X' + '</button>' );
             series.push(element.co2);
             transports.push(element);
         });
@@ -23,11 +24,9 @@ function TripView(props) {
                         }
                     },
                 },
-            labels: labels
+            labels: labels,
+            
     }
-    
-        
-
         return(
             <apexchart width="500"  options={options} series={series}></apexchart> 
         )
@@ -35,8 +34,6 @@ function TripView(props) {
     }
 
     function calculateOverallCo2CB(sum, val){
-        console.log(sum)
-        console.log(val.co2)
         return sum + val.co2
     }
 
@@ -54,8 +51,6 @@ function TripView(props) {
                 <div class="card-content">
                      {renderPieChartABC(props.trip.transportations)}
                 </div>
-                
-                
                 </div>
         </div>
     );
