@@ -1,10 +1,10 @@
 import anime from "animejs/lib/anime.es.js";
 
-function animate() {
+function animateBars() {
   let barsEasing = "cubicBezier(0.24, 1.37, 0.46, 1)";
 
   // Green Bars
-  let greenBars = document.querySelectorAll(".bar-green");
+  let greenBars = document.querySelectorAll(".bar-polygon");
   let animateGreenBars = anime({
     targets: [].slice.call(greenBars, 0).reverse(),
     scaleY: [0.1, 1],
@@ -15,4 +15,4 @@ function animate() {
   });
 }
 
-export default animate;
+export default animateBars;
