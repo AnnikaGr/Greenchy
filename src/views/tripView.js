@@ -25,6 +25,9 @@ function TripView(props) {
                     <div class="card-content">
                         {renderPieChartABC(props.trip.transportations)}
                     </div>
+                    <a class="button" href="https://store.compensate.com" target="_blank">
+                        Compensate {props.trip.transportations.reduce((prev, curr) => prev + curr.co2/1000, 0.0).toFixed(2)}t of Co2 emissions
+                    </a>
                 </div>
             </div>
         );
