@@ -11,7 +11,7 @@ function TripView(props) {
         var transports = [];
 
         addedTransports.forEach(element => {
-            labels.push( '' + element.modeOfTransport + ' ' + element.co2.toFixed(1) + ' kg' + '<button style="font-size: 10px; float: right; margin-left: 5px;">' + 'X' + '</button>' );
+            labels.push( '' + element.modeOfTransport + ' ' + element.co2.toFixed(1) + ' kg' + '<button style="font-size: 10px; margin-left: 5px;">' + 'X' + '</button>' );
             series.push(element.co2);
             transports.push(element);
         });
@@ -31,6 +31,10 @@ function TripView(props) {
             <apexchart width="500"  options={options} series={series}></apexchart> 
         )
  
+    }
+
+    function myFunction(){
+        console.log('hi')
     }
 
     function calculateOverallCo2CB(sum, val){
