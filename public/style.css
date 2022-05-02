@@ -18,6 +18,12 @@ html {
     overflow: hidden;
 }
 
+@media screen and (max-width: 800px){
+    .planet-minigame {
+        display: none;
+    }
+}
+
 /*-----Travel Distance Input Field*/
 .input-field-wrapper {
     position: relative;
