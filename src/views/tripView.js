@@ -18,8 +18,8 @@ function TripView(props) {
                 chart: {
                     type: 'donut',
                     events: {
-                        legendClick: (config) => {
-                            props.onTransportDeletion(transports[config.dataPointIndex]);
+                        legendClick: (seriesIndex) => {
+                            props.onTransportDeletion(transports[seriesIndex]);
                         }
                     },
                 },
@@ -34,6 +34,12 @@ function TripView(props) {
  
     }
 
+    function calculateOverallCo2CB(sum, val){
+        console.log(sum)
+        console.log(val.co2)
+        return sum + val.co2
+    }
+
 
 
 
@@ -43,7 +49,7 @@ function TripView(props) {
           <h1>Your trip</h1>
           <div class="card">
                     <div class="card-header">
-                       <h1>Overall Co2: </h1>
+                       <h1>Overall Co2: <b> {props.trip.transportations.reduce(calculateOverallCo2CB, 0).toFixed(2)}</b> kg Co2</h1>
                     </div>
                 <div class="card-content">
                      {renderPieChartABC(props.trip.transportations)}
