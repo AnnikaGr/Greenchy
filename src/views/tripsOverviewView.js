@@ -26,19 +26,27 @@ function TripsOverviewView(props) {
             </div>
 
             <div class="columns is-vcentered is-multiline">
-                {props.tripsModel.trips.map(renderTripTile)}
+                {renderTripTiles(props.tripsModel)}
             </div>
     </div>);
 
-    function renderTripTile(trip) {
-        return (
-            <div class="column is-one-quarter is-centered">
-                <div class="box has-background-primary">
-                    <button class="delete is-pulled-right" onClick={() => props.tripRemoved(trip)}>Remove</button>
-                    <router-link to={("/trips/" + trip.id)} class="title has-text-white">{trip.name}</router-link>
+    function renderTripTiles(tripsModel) {
+        if (tripsModel && tripsModel.trips) {
+            return tripsModel.trips.map(renderTripTile)
+        } else {
+            return <h1>No Trips</h1>
+        }
+
+        function renderTripTile(trip) {
+            return (
+                <div class="column is-one-quarter is-centered">
+                    <div class="box has-background-primary">
+                        <button class="delete is-pulled-right" onClick={() => props.tripRemoved(trip)}>Remove</button>
+                        <router-link to={("/trips/" + trip.id)} class="title has-text-white">{trip.name}</router-link>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
     }
 }
 
