@@ -91,7 +91,7 @@ function getColor(emissions, activity_worst_emissions) {
   return ["hsl(", hue, ",100%, 70%)"].join("");
 }
 
-function normalizeNumber(val, max, min = 1) {
+function normalizeNumber(val, max, min = 0) {
   return (val - min) / (max - min);
 }
 
