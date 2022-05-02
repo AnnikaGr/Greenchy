@@ -18,7 +18,13 @@ html {
     overflow: hidden;
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 1000px){
+    .planet-minigame {
+        display: none;
+    }
+}
+
+@media screen and (max-height: 650px){
     .planet-minigame {
         display: none;
     }
@@ -60,7 +66,7 @@ html {
 .post {
     position: absolute;
     bottom: 20px;
-    left: 20px;
+    right: 20px;
     font-family: 'Source Sans Pro', sans-serif;
     color: rgba(0, 0, 0, 0.4);
     font-size: 12px;
