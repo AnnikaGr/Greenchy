@@ -2,8 +2,6 @@ import "charts.css";
 
 
 function TripView(props) {
-
-
     function renderPieChartABC(addedTransports){
         var labels = [];
         var series = [];
@@ -15,31 +13,22 @@ function TripView(props) {
         var options = {
             labels: labels
         }
-
         return(
             <apexchart width="500" type="donut" options={options} series={series}></apexchart> 
         )
- 
     }
-
-
-
-
-    return (
-        
-      <div>
-          <h1>Your trip</h1>
-          <div class="card">
-                    <div class="card-header">
-                       <h1>Overall Co2: </h1>
+    if (props.trip.transportations.length > 0) {
+        return (
+            <div>
+                <div class="card box">
+                    <h2 class="title is-4"> Overall Co2 </h2>
+                    <div class="card-content">
+                        {renderPieChartABC(props.trip.transportations)}
                     </div>
-                <div class="card-content">
-                     {renderPieChartABC(props.trip.transportations)}
                 </div>
-                
-                </div>
-        </div>
-    );
+            </div>
+        );
+    }
   }
   
   export default TripView;

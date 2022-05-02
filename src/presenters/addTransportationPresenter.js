@@ -54,6 +54,7 @@ const AddTransportation = {
 
 		function onSelectTransportACB(transportSelection) {
 			component.userModel.tripsModel.addTransportation(component.trip.id, parseFloat(component.distance), parseInt(component.passengers), transportSelection[0], transportSelection[1])
+			component.promiseState = {}
 		}
 
 		function parseActivityData(data, passengers) {
@@ -73,7 +74,6 @@ const AddTransportation = {
 			<div class="container is-fluid">
 				<h1 class="title">{this.trip.name}</h1>
 				<div class="columns is-vcentered">
-
 					<div class="column">
 						<SearchTransportationView
 							onDistanceInputChange={onDistanceInputChangeACB}
@@ -91,8 +91,6 @@ const AddTransportation = {
 						onSelectTransport={onSelectTransportACB}
 					/>
 				)}
-
-
 			</div>
 		);
 	},
