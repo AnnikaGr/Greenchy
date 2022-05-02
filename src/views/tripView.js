@@ -14,6 +14,11 @@ function TripView(props) {
             transports.push(element);
         });
         var options = {
+            plotOptions: {
+                pie: {
+                  expandOnClick: false
+                }
+              },
                 chart: {
                     type: 'donut',
                     events: {
@@ -21,6 +26,9 @@ function TripView(props) {
                             props.onTransportDeletion(transports[chartContext], props.trip.id);
                         }
                     },
+                },
+                tooltip: {
+                    enabled: false
                 },
             labels: labels,
             
@@ -30,6 +38,7 @@ function TripView(props) {
         )
  
     }
+
     function calculateOverallCo2CB(sum, val){
         return sum + val.co2
     }
