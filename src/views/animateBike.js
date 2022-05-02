@@ -79,7 +79,6 @@ function animateBike() {
   let lastDirection = "";
 
   document.addEventListener("keydown", (e) => {
-    console.log("key pressed");
     if (e.keyCode === 37) {
       left = true;
       lastDirection = "left";
@@ -92,7 +91,6 @@ function animateBike() {
   });
 
   document.addEventListener("keyup", (e) => {
-    console.log("key pressed");
     if (e.keyCode === 37) {
       left = false;
     } else if (e.keyCode === 39) {

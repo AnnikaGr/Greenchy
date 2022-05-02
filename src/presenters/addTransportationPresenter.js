@@ -56,6 +56,10 @@ const AddTransportation = {
 			component.userModel.tripsModel.addTransportation(component.trip.id, parseFloat(component.distance), parseInt(component.passengers), transportSelection[0], transportSelection[1])
 		}
 
+		function onTransportDeletionABC(transport, id){
+			component.userModel.tripsModel.removeTransportation(id, transport )
+		}
+
 		function parseActivityData(data, passengers) {
 			function extractDetailsCB(activity) {
 				if (activity.emission_factor.category === "Road Travel") {
@@ -69,10 +73,6 @@ const AddTransportation = {
 			return content;
 		}
 
-		function onTransportDeletionABC(transport){
-			var index = component.trip.transportations.indexOf(transport);
-			component.trip.transportations.splice(index, 1);
-		}
 
 		return (
 			<div class="container is-fluid">

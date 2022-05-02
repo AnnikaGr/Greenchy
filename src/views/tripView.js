@@ -1,9 +1,7 @@
 import "charts.css";
-import { h } from "vue";
 
 
 function TripView(props) {
-
 
     function renderPieChartABC(addedTransports){
         var labels = [];
@@ -19,8 +17,8 @@ function TripView(props) {
                 chart: {
                     type: 'donut',
                     events: {
-                        legendClick: (seriesIndex) => {
-                            props.onTransportDeletion(transports[seriesIndex]);
+                        legendClick: (seriesIndex, chartContext, config) => {
+                            props.onTransportDeletion(transports[chartContext], props.trip.id);
                         }
                     },
                 },
@@ -32,17 +30,9 @@ function TripView(props) {
         )
  
     }
-
-    function myFunction(){
-        console.log('hi')
-    }
-
     function calculateOverallCo2CB(sum, val){
         return sum + val.co2
     }
-
-
-
 
     return (
         
@@ -59,5 +49,5 @@ function TripView(props) {
         </div>
     );
   }
-  
+
   export default TripView;
