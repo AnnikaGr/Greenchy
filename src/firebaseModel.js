@@ -68,7 +68,7 @@ function updateTripFromFirebase(userModel, trip) {
             trip.transportations = [...trip.transportations, data.val()]
         }
     })
-    firebase.database().ref(REF_TRIP + "/transportations").once("child_removed", (data) => {
+    firebase.database().ref(REF_TRIP + "/transportations").on("child_removed", (data) => {
         const transportationToRemove = trip.transportations.find(transp => transp.id === +data.key)
         if (transportationToRemove) {
             userModel.tripsModel.removeTransportation(trip.id, transportationToRemove)
@@ -81,11 +81,11 @@ function unsubscribeFromFirebaseUpdates(userModel) {
 
     firebase.database().ref(REF+"/trips").off("child_added")
 	firebase.database().ref(REF+"/trips").off("child_removed")
-    firebase.database().ref(REF+"/trips").once("value").then(data => {
+    return firebase.database().ref(REF+"/trips").once("value").then(data => {
         data.forEach(trip => {
             const REF_TRIP = REF + "/trips/" + trip.id
-            firebase.database().ref(REF_TRIP + "/transportation").off("child_added")
-            firebase.database().ref(REF_TRIP + "/transportation").off("child_removed")
+            firebase.database().ref(REF_TRIP + "/transportations").off("child_added")
+            firebase.database().ref(REF_TRIP + "/transportations").off("child_removed")
         })
     })
 }
@@ -124,7 +124,6 @@ function observeAuthStatus(userModel) {
 					updateModelFromFirebase(userModel);
 				})
 			} else {
-				unsubscribeFromFirebaseUpdates(userModel);
 				userModel.reset();
 			}
 		}, logError
@@ -135,9 +134,6 @@ function observeAuthStatus(userModel) {
 function signInWithFirebase(credentials) {
 	const auth = getAuth();
 	return signInWithEmailAndPassword(auth, credentials.email, credentials.password)
-		.then((userCredential) => {
-			console.log(userCredential)
-		})
 }
 
 //register
@@ -155,10 +151,11 @@ function signUpWithFirebase(credentials) {
 }
 
 // logout
-function signOutFromFirebase() {
+function signOutFromFirebase(userModel) {
 	const auth = getAuth();
-	return signOut(auth)
-		.catch(logError)
+    return unsubscribeFromFirebaseUpdates(userModel)
+        .then(() => signOut(auth))
+        .catch(logError)
 }
 
 export { observeAuthStatus , signInWithFirebase, signUpWithFirebase, signOutFromFirebase};
