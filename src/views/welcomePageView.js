@@ -7,7 +7,8 @@ function WelcomePageView(props) {
         </div>
         <div class="columns is-centered ">
           <h2 class="subtitle is-5 has-text-white">
-            Keep track of your carbon emissions for your travels and stay green!
+            Your first sustainable trip planner that helps you 
+            calculate how much CO2 you spend on a trip.
           </h2>
         </div>
 

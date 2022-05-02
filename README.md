@@ -1,6 +1,7 @@
 # Welcome to Greenchy!
 
 Hi! **Greenchy** is your first sustainable trip planner. If you want to learn about Greenchy, keep reading. **Greenchy** is an online app that calculates how much CO2 you spend on a trip. From distance to meals, you can plan your perfect sustainable trip.
+**Greenchy** nurtures its data from https://www.climatiq.io/. The app sends information about distance and it returns CO2 spend in different formats. 
 
 ## What have we done
 
