@@ -1,17 +1,5 @@
 function WelcomePageView(props) {
   return (
-<<<<<<< HEAD
-    <section class="welcome-page-wrapper columns is-vcentered">
-      <div class="column">
-        <div class="columns  is-centered">
-          <h1 class="title is-1 has-text-white">Welcome to Greenchy</h1>
-        </div>
-        <div class="columns is-centered ">
-          <h2 class="subtitle is-5 has-text-white">
-            Your first sustainable trip planner that helps you 
-            calculate how much CO2 you spend on a trip.
-          </h2>
-=======
     <section class="welcome-page-wrapper is-flex columns is-vcentered">
       <div class="hero column">
         <div class="hero-body">
@@ -19,7 +7,6 @@ function WelcomePageView(props) {
           <p class="subtitle is-5 has-text-white">
             Keep track of your carbon emissions for your travels and stay green!
           </p>
->>>>>>> d86ad7b15032670a91dfe1f113521634cb0245a7
         </div>
       </div>
 
