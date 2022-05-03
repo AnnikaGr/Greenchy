@@ -8,7 +8,7 @@ function TripView(props) {
         var transports = [];
 
         addedTransports.forEach(element => {
-            labels.push( '' + element.modeOfTransport + ' ' + element.co2.toFixed(1) + ' kg' + '<button style="font-size: 10px; margin-left: 5px;">' + 'X' + '</button>' );
+            labels.push( '' + element.modeOfTransport + ' ' + element.co2.toFixed(1) + ' kg Co2' + '<button style="font-size: 10px; margin-left: 5px;">' + 'X' + '</button>' );
             series.push(element.co2);
             transports.push(element);
         });
