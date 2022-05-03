@@ -6,38 +6,41 @@ const WelcomePageView = {
   },
   render() {
     return (
-      <section class="welcome-page-wrapper columns is-vcentered">
-        <div class="column">
-          <div class="columns  is-centered">
-            <h1 class="title is-1 has-text-white">Welcome to Greenchy</h1>
-          </div>
-          <div class="columns is-centered ">
-            <h2 class="subtitle is-5 has-text-white">
-              Keep track of your carbon emissions for your travels and stay
-              green!
-            </h2>
-          </div>
+    <section class="welcome-page-wrapper is-flex columns is-vcentered">
+      <div class="hero column">
+        <div class="hero-body">
+          <p class="title is-1 has-text-white">Welcome to Greenchy</p>
+          <p class="subtitle is-5 has-text-white">
+            Keep track of your carbon emissions for your travels and stay green!
+          </p>
+        </div>
+      </div>
 
-          <div class="modal">
-            <div class="modal-background"></div>
 
-            <div class="modal-content">
-              <div class="box">
-                <p>Modal JS example</p>
-              </div>
-            </div>
-
-            <button class="modal-close is-large" aria-label="close"></button>
-          </div>
-
+      <div class="planet-minigame column">
           <div class="post">
             <button class="post__link" target="_blank">
               License
             </button>
           </div>
 
-          <div class="columns is-centered planet-wrapper">
-            <div class="planet">
+          <div class="planet-wrapper columns is-centered">
+            {renderPlanet()}
+          </div>
+
+          <div class="columns is-centered">
+            <div class="instructions">
+              <p class="is-size-7 has-text-white">Use arrows to move</p>
+              <p class="is-size-7 has-text-white">Hold space for rain</p>
+            </div>
+          </div>
+        </div>
+    </section>
+  );
+
+  function renderPlanet() {
+    return (
+      <div class="planet">
               <svg
                 class="rotating-fog"
                 x="0px"
@@ -250,18 +253,8 @@ const WelcomePageView = {
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="columns is-centered">
-            <div class="instructions">
-              <p class="is-size-7 has-text-white">Use arrows to move</p>
-              <p class="is-size-7 has-text-white">Hold space for rain</p>
-            </div>
-          </div>
-        </div>
-      </section>
     );
-  },
-};
+  }
+}
 
 export default WelcomePageView;
