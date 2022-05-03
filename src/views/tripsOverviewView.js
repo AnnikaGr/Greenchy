@@ -8,21 +8,20 @@ function TripsOverviewView(props) {
     return (
         <div class="container block is-fluid">
             <div class="title is-1 block">All of your Trips</div>
-            <div class="block">
-                <label class="subtitle is-5" for="tripName-input">
-                    Trip Name
-                </label>
-                <div class="input-field-wrapper">
+            {renderProgressBar(props.tripsModel)}
+            <label class="label">Plan a new Trip!</label>
+            <div class="field has-addons">
+                <p class="control">
                     <input
-                        class="input block"
+                        class="input"
                         type="text"
-                        id="tripName-input"
-                        name="tripName-input"
                         onChange={nameChangeACB}
                         value={props.tripName}
                     />
-                </div>
-                <div class="button block" onClick={() => props.newTrip()}>Add new Trip</div>
+                </p>
+                <p class="control">
+                    <div class="button is-primary" onClick={() => props.newTrip()}>Add</div>
+                </p>
             </div>
 
             <div class="columns is-vcentered is-multiline">
@@ -30,11 +29,21 @@ function TripsOverviewView(props) {
             </div>
     </div>);
 
+    function renderProgressBar(tripsModel) {
+        if (tripsModel) {
+
+            return (
+                <div class="block">
+                    <progress class="progress is-danger is-large" value={Math.min(100, 100 * (tripsModel.getCompleteEmission() / 1000))} max="100"></progress>
+                    <p>You spent {tripsModel.getCompleteEmission().toFixed(2)}kg Co2 of 1t budget for one year</p>
+                </div>
+            );
+        }
+    }
+
     function renderTripTiles(tripsModel) {
         if (tripsModel && tripsModel.trips) {
             return tripsModel.trips.map(renderTripTile)
-        } else {
-            return <h1>No Trips</h1>
         }
 
         function renderTripTile(trip) {
@@ -43,6 +52,7 @@ function TripsOverviewView(props) {
                     <div class="box has-background-primary">
                         <button class="delete is-pulled-right" onClick={() => props.tripRemoved(trip)}>Remove</button>
                         <router-link to={("/trips/" + trip.id)} class="title has-text-white">{trip.name}</router-link>
+                        <p class="has-text-white">{trip.getOverallCo2().toFixed(2)}kg Co2</p>
                     </div>
                 </div>
             );

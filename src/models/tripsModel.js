@@ -4,6 +4,10 @@ class TripsModel {
         this.observers = []
     }
 
+    getCompleteEmission() {
+        return this.trips.reduce((prev, curr) => prev + curr.getOverallCo2(), 0.0)
+    }
+
     getTrip(id) {
         if (this.trips){
             return this.trips.find(trip => trip.id === id)
