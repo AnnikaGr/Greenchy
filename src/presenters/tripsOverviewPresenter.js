@@ -10,7 +10,11 @@ const TripsOverview = {
     },
     render() {
         const me = this;
-        return <TripOverviewView tripName={this.name} userName={this.userModel.displayName} tripsModel={this.userModel.tripsModel} nameChanged={changeTripName} newTrip={addTrip} tripRemoved={removeTrip}/>
+        if (this.userModel.loaded) {
+            return <TripOverviewView tripName={this.name} userName={this.userModel.displayName} tripsModel={this.userModel.tripsModel} nameChanged={changeTripName} newTrip={addTrip} tripRemoved={removeTrip}/>
+        } else {
+            return <div class="pageloader is-active"><span class="title">Loading Trips...</span></div>
+        }
         
         function addTrip() {
             if (me.name !== "") {

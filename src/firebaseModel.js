@@ -122,6 +122,7 @@ function observeAuthStatus(userModel) {
 				firebaseModelPromise(userModel).then(() => {
 					updateFirebaseFromModel(userModel);
 					updateModelFromFirebase(userModel);
+                    userModel.loaded = true
 				})
 			} else {
 				userModel.reset();
