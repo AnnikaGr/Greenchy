@@ -13,7 +13,7 @@ function TripsOverviewView(props) {
                 <section class="hero is-primary box">
                     <div class="hero-body">
                         <p class="title">
-                            Welcome back {props.userName}!
+                            Welcome {props.userName !== null ? "back " + props.userName : "to Greenchy"}!
                         </p>
                         <p>
                             {renderProgressBar(props.tripsModel)}
