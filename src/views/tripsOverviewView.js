@@ -5,37 +5,52 @@ function TripsOverviewView(props) {
         props.nameChanged(event.target.value)
     }
 
+    //<div class="title is-1 block">All of your Trips</div>
     return (
-        <div class="container block is-fluid">
-            <div class="title is-1 block">All of your Trips</div>
-            {renderProgressBar(props.tripsModel)}
-            <label class="label">Plan a new Trip!</label>
-            <div class="field has-addons">
-                <p class="control">
-                    <input
-                        class="input"
-                        type="text"
-                        onChange={nameChangeACB}
-                        value={props.tripName}
-                    />
-                </p>
-                <p class="control">
-                    <div class="button is-primary" onClick={() => props.newTrip()}>Add</div>
-                </p>
-            </div>
+        <div>
+            <div class="container block is-fluid">
 
-            <div class="columns is-vcentered is-multiline">
-                {renderTripTiles(props.tripsModel)}
+                <section class="hero is-primary box">
+                    <div class="hero-body">
+                        <p class="title">
+                            Welcome back {props.userName}!
+                        </p>
+                        <p>
+                            {renderProgressBar(props.tripsModel)}
+                        </p>
+                    </div>
+                </section>
+
+                <div class="box">
+
+                    <label class="label">Plan a new Trip!</label>
+                    <div class="field has-addons">
+                        <p class="control">
+                            <input
+                                class="input"
+                                type="text"
+                                onChange={nameChangeACB}
+                                value={props.tripName}
+                            />
+                        </p>
+                        <p class="control">
+                            <div class="button is-primary" onClick={() => props.newTrip()}>Add</div>
+                        </p>
+                    </div>
+                </div>
+                <div class="columns is-vcentered is-multiline">
+                    {renderTripTiles(props.tripsModel)}
+                </div>
             </div>
-    </div>);
+        </div>);
 
     function renderProgressBar(tripsModel) {
         if (tripsModel) {
 
             return (
                 <div class="block">
-                    <progress class="progress is-danger is-large" value={Math.min(100, 100 * (tripsModel.getCompleteEmission() / 1000))} max="100"></progress>
-                    <p>You spent {tripsModel.getCompleteEmission().toFixed(2)}kg Co2 of 1t budget for one year</p>
+                    <a href="https://www.oxfam.org/en/press-releases/carbon-emissions-richest-1-set-be-30-times-15degc-limit-2030" target="_blank" data-tooltip="Tooltip Text" class="help"> Your planned trips have used {tripsModel.getCompleteEmission().toFixed(2)}kg Co2 out of a 2.3t yearly budget to have a reasonable chance of limiting global heating to 1.5°C.</a>
+                    <progress class="progress is-danger is-large" value={Math.min(100, 100 * (tripsModel.getCompleteEmission() / 2300))} max="100"></progress>
                 </div>
             );
         }
