@@ -82,7 +82,10 @@ const AddTransportation = {
 						/>
 					</div>
 					<div class="column is-one-half">
-						<TripView trip={component.trip} onTransportDeletion={onTransportDeletionABC} />
+						<TripView 
+							trip={component.trip} 
+							onTransportDeletion={onTransportDeletionABC} 
+							onAlternativesSearch={onAlternativesSearchACB}/>
 					</div> 
 				</div>
 				{promiseNoData(component.promiseState) || (
