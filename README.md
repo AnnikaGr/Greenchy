@@ -5,6 +5,7 @@ Hi! **Greenchy** is your first sustainable trip planner. If you want to learn ab
 ## What have we done
 
 For the time being we have developed our first MVP in which you can start calculating how much CO2 your spend during a trip with multiple journeys. You can create multiple trips and edit them individually. Simply after inputting the amount of kilometers, you will have different options such as plane, train or bus to choose from.
+
 After seeing the different options, you just have to press the plus button to add that option to your trip.
 The trips are persisted and connected to your account for which you can sign up on our Welcome Page.
 
