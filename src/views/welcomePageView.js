@@ -33,13 +33,12 @@ const WelcomePageView = {
           <div class="modal-background" onClick={this.hideLicense}></div>
           <div class="modal-content">
             <div class="box">
-              <p>License for the World Animation Copyright </p>
-              <p>
-                {" "}
+              <p class="is-size-4">Copyright for the World Animation </p>
+              <p class="is-size-6">
                 (c) 2022 by Mariusz Dabrowski
-                (https://codepen.io/MarioD/pen/EvMNqE){" "}
+                (https://codepen.io/MarioD/pen/EvMNqE)
               </p>
-              <p>
+              <p class="is-size-6">
                 Permission was granted, free of charge, to any person obtaining
                 a copy of the software and associated documentation files (the
                 "Software"), to deal in the Software without restriction,
@@ -49,6 +48,9 @@ const WelcomePageView = {
                 furnished to do so, subject to the following conditions: The
                 above copyright notice and this permission notice shall be
                 included in all copies or substantial portions of the Software.
+              </p>
+
+              <p class="is-size-6">
                 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
                 EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
                 OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
