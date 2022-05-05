@@ -11,6 +11,10 @@ html {
     overflow: hidden;
 }
 
+.planet {
+    z-index: 0;
+}
+
 @media screen and (max-width: 1000px){
     .planet-minigame {
         display: none;
@@ -38,6 +42,8 @@ html {
     pointer-events: none;
     opacity: .5;
 }
+
+
 
 
 /*--------Co2 Visualizations CSS----------------------*/
