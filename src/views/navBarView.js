@@ -24,9 +24,7 @@ function NavBarView(props) {
 
                             <div class="navbar-menu" id='navItems'>
                                 <div class="navbar-start">
-                                    <router-link to="/trips" class="navbar-item">
-                                        Trips
-                                    </router-link>
+                                    { props.userLoggedIn ? <router-link to="/trips" class="navbar-item"> Trips</router-link> : <div></div>}
                                 </div>
 
                                 <div class="navbar-end">
