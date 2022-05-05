@@ -1,15 +1,17 @@
-// 1. Import the initial variables
+﻿// 1. Import the initial variables
 @charset "utf-8";
 @import "../node_modules/bulma/sass/utilities/initial-variables.sass";
 
 // 2. Set your own initial variables
 $green: #289431;
 $green-invert: #fff;
+$lightgreen: #b5c755;
 // Add a serif family
 //$family-serif: "Merriweather", "Georgia", serif;
 
 // 3. Set the derived variables
 $primary: $green;
+$secondary: $lightgreen
 $primary-invert: $green-invert;
 // Use the existing orange as the danger color
 $danger: $orange;

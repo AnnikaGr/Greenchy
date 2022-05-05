@@ -1,14 +1,23 @@
-/*-----Background----------*/
+/*--------Define Backgrounds-------*/
+
+.gradient-background {
+    background: linear-gradient(90deg, #258a2e 0%, #b5c755 100%);
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    background: radial-gradient(ellipse at center, #b5c755 0%, #258a2e 70%);
+    overflow: hidden;
+}
+
+/*-----Start Page Background----------*/
 
 html {
     height: 100%;
 
 }
-
-.welcome-page-wrapper {
+.startpage {
     height: 100vh;
-    background: radial-gradient(ellipse at center, #b5c755 0%, #258a2e 70%);
-    overflow: hidden;
 }
 
 .planet {
@@ -43,13 +52,15 @@ html {
     opacity: .5;
 }
 
+/*--------Trip Card Styling----------------------*/
 
 
+.trip-card:hover {
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0px 0 1px rgb(10 10 10 / 2%);
+}
 
-/*--------Co2 Visualizations CSS----------------------*/
-
-.lines,
-.months {
+    /*--------Co2 Visualizations CSS----------------------*/
+    .lines, .months {
     opacity: 0;
 }
 

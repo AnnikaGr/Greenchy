@@ -18,15 +18,14 @@ const WelcomePageView = {
   },
   render() {
     return (
-      <section class="welcome-page-wrapper columns is-vcentered">
+      <section class="page-wrapper startpage columns is-vcentered">
         <div class="column">
           <div class="columns  is-centered">
             <h1 class="title is-1 has-text-white">Welcome to Greenchy</h1>
           </div>
           <div class="columns is-centered ">
             <h2 class="subtitle is-5 has-text-white">
-              Keep track of your carbon emissions for your travels and stay
-              green!
+              Keep track of your travel carbon emissions and stay green!
             </h2>
           </div>
 
@@ -34,7 +33,7 @@ const WelcomePageView = {
             <div class="post">
               <button
                 onClick={this.showLicense}
-                class="post__link"
+                class="post__link button is-ghost is-small"
                 target="_blank"
               >
                 License
