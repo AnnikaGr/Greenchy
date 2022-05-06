@@ -80,32 +80,35 @@ const AddTransportation = {
 
     return (
       <div class="page-wrapper container is-fluid">
-        <div class="box mt-5">
+        <div class="box mt-5 has-text-centered">
           <h1 class="title">{this.trip.name}</h1>
         </div>
         <div class="columns">
-          <div class="column box">
-            <SearchTransportationView
-              onDistanceInputChange={onDistanceInputChangeACB}
-              onPassengersInputChange={onPassengersInputChangeACB}
-              onAlternativesSearch={onAlternativesSearchACB}
-            />
-
-            {promiseNoData(component.promiseState) || (
-              <Co2VisualizationView
-                class="mt-5"
-                results={parseActivityData(
-                  component.promiseState.data,
-                  parseInt(component.passengers)
-                )}
-                onSelectTransport={onSelectTransportACB}
+          <div class="column ">
+            <div class="box">
+              <SearchTransportationView
+                onDistanceInputChange={onDistanceInputChangeACB}
+                onPassengersInputChange={onPassengersInputChangeACB}
+                onAlternativesSearch={onAlternativesSearchACB}
               />
-            )}
+
+              {promiseNoData(component.promiseState) || (
+                <Co2VisualizationView
+                  class="mt-5"
+                  results={parseActivityData(
+                    component.promiseState.data,
+                    parseInt(component.passengers)
+                  )}
+                  onSelectTransport={onSelectTransportACB}
+                />
+              )}
+            </div>
           </div>
           <div class="column is-one-half">
             <TripView
               trip={component.trip}
-              onTransportDeletion={onTransportDeletionABC} onAlternativesSearch={onAlternativesSearchACB}
+              onTransportDeletion={onTransportDeletionABC}
+              onAlternativesSearch={onAlternativesSearchACB}
             />
           </div>
         </div>
