@@ -1,15 +1,15 @@
 function SearchTransportationView(props) {
-	function distanceChangeACB(event) {
-		props.onDistanceInputChange(event.target.value);
-	}
+  function distanceChangeACB(event) {
+    props.onDistanceInputChange(event.target.value);
+  }
 
-	function passengerChangeACB(event) {
-		props.onPassengersInputChange(event.target.value);
-	}
+  function passengerChangeACB(event) {
+    props.onPassengersInputChange(event.target.value);
+  }
 
-	function getAlternatives() {
-		props.onAlternativesSearch();
-	}
+  function getAlternatives() {
+    props.onAlternativesSearch();
+  }
 
 	return (
 		<div class="searchForm container is-fluid box">

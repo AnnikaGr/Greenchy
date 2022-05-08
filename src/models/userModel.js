@@ -13,6 +13,7 @@ class UserModel {
 		this.photoURL = photoURL;
 		this.uid = uid;
 		this.tripsModel = tripsModel;
+		this.loaded = false
 	}
 
 	reset() {
@@ -21,6 +22,7 @@ class UserModel {
 		this.photoURL = null
 		this.uid = null
 		this.tripsModel = null
+		this.loaded = false
 	}
 }
 

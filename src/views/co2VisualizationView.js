@@ -1,21 +1,31 @@
+import animateBars from "../views/animateBars.js";
+
 //props.results should contain a 2-dim array of labels of the activity and amount of kgCo2 for each activity
+const Co2VisualizationView = {
+  props: {
+    results: Array,
+    onSelectTransport: Function,
+  },
+  mounted() {
+    animateBars();
+  },
+  render() {
+    return (
+      <div class="columns is-centered">
+        {renderData(
+          this.results,
+          Math.max.apply(
+            Math,
+            this.results.map((value) => value[1])
+          ),
+          this.onSelectTransport
+        )}
+      </div>
+    );
+  },
+};
 
-function Co2VisualizationView(props) {
-  return (
-    <div class="columns is-centered">
-      {renderData(
-        props.results,
-        Math.max.apply(
-          Math,
-          props.results.map((value) => value[1])
-        ),
-        props
-      )}
-    </div>
-  );
-}
-
-function renderData(co2_data, activity_worst_emissions, props) {
+function renderData(co2_data, activity_worst_emissions, onSelectTransport) {
   function visualizeCo2EmissionsCB(activity_co2_emissions) {
     return (
       <div
@@ -24,13 +34,15 @@ function renderData(co2_data, activity_worst_emissions, props) {
       >
         <text class="subtitle is-5"> {activity_co2_emissions[0]} </text> <br />
         <button
-          onClick={() => props.onSelectTransport(activity_co2_emissions)}
+          onClick={() => onSelectTransport(activity_co2_emissions)}
           class="button is-primary is-outlined"
         >
           + Add to trip
         </button>{" "}
         <br />
-        <text class="subtitle is-7">{activity_co2_emissions[1].toFixed(4)} kg Co2</text>
+        <text class="subtitle is-7">
+          {activity_co2_emissions[1].toFixed(4)} kg Co2
+        </text>
         <br />
         <svg
           class="bar"
@@ -42,7 +54,7 @@ function renderData(co2_data, activity_worst_emissions, props) {
         >
           <g class="Bars">
             <polygon
-              class="bar bar-green"
+              class="bar-polygon"
               fill={getColor(
                 activity_co2_emissions[1],
                 activity_worst_emissions
@@ -79,7 +91,7 @@ function getColor(emissions, activity_worst_emissions) {
   return ["hsl(", hue, ",100%, 70%)"].join("");
 }
 
-function normalizeNumber(val, max, min = 1) {
+function normalizeNumber(val, max, min = 0) {
   return (val - min) / (max - min);
 }
 

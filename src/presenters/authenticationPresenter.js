@@ -5,18 +5,40 @@ const Authentication = {
     props: ["isSignUp"],
     data(){
         return {
-            error: {}
+            error: {},
+            credentials: {}
         }
     },
     render(){
-        return <AuthenticationView isSignUp={this.isSignUp} signIn={signIn} signUp={signUp} error={this.error}/>
+        const me = this
+        return <AuthenticationView onEmailChange={emailChanged} onPasswordChange={passwordChanged} onNameChange={nameChanged} onSignInUp={signInUp} isSignUp={this.isSignUp} error={this.error}/>
 
-        function signIn(credentials) {
-            signInWithFirebase(credentials).then(() => this.$router.push("/trips")).catch((error) => this.error.message = error.message)
+        function emailChanged(email) {
+            me.credentials.email = email
         }
 
-        function signUp(credentials) {
-            signUpWithFirebase(credentials).then(() => this.$router.push("/trips")).catch((error) => this.error.message = error.message)
+        function passwordChanged(password) {
+            me.credentials.password = password
+        }
+
+        function nameChanged(name) {
+            me.credentials.name = name
+        }
+
+        function signInUp() {
+            if (me.isSignUp) {
+                signUp()
+            } else {
+                signIn()
+            }
+        }
+
+        function signIn() {
+            signInWithFirebase(me.credentials).then(() => me.$router.push("/trips")).catch((error) => me.error.message = error.message)
+        }
+
+        function signUp() {
+            signUpWithFirebase(me.credentials).then(() => me.$router.push("/trips")).catch((error) => me.error.message = error.message)
         }
     }
 }

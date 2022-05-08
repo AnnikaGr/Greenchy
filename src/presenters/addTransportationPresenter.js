@@ -7,9 +7,7 @@ import {
 	getEmissionsForAirTravel,
 	getEmissionsForRailTravel,
 } from "../emissionsSource.js";
-import { resolvePromise } from "../utils.js"
-import animate from "../views/animation.js";
-
+import { resolvePromise } from "../utils.js";
 
 const AddTransportation = {
 	props: ["userModel"],
@@ -19,9 +17,6 @@ const AddTransportation = {
 			passengers: "",
 			promiseState: {},
 		};
-	},
-	updated() {
-		animate();
 	},
 	created() {
 		this.trip = this.userModel.tripsModel.getTrip(+this.$route.params.tripId)
@@ -54,6 +49,11 @@ const AddTransportation = {
 
 		function onSelectTransportACB(transportSelection) {
 			component.userModel.tripsModel.addTransportation(component.trip.id, parseFloat(component.distance), parseInt(component.passengers), transportSelection[0], transportSelection[1])
+			component.promiseState = {}
+		}
+
+		function onTransportDeletionABC(transport, id){
+			component.userModel.tripsModel.removeTransportation(id, transport )
 		}
 
 		function parseActivityData(data, passengers) {
@@ -69,11 +69,11 @@ const AddTransportation = {
 			return content;
 		}
 
+
 		return (
 			<div class="container is-fluid">
 				<h1 class="title">{this.trip.name}</h1>
 				<div class="columns is-vcentered">
-
 					<div class="column">
 						<SearchTransportationView
 							onDistanceInputChange={onDistanceInputChangeACB}
@@ -82,7 +82,10 @@ const AddTransportation = {
 						/>
 					</div>
 					<div class="column is-one-half">
-						<TripView trip={component.trip} />
+						<TripView 
+							trip={component.trip} 
+							onTransportDeletion={onTransportDeletionABC} 
+							onAlternativesSearch={onAlternativesSearchACB}/>
 					</div> 
 				</div>
 				{promiseNoData(component.promiseState) || (
@@ -91,8 +94,6 @@ const AddTransportation = {
 						onSelectTransport={onSelectTransportACB}
 					/>
 				)}
-
-
 			</div>
 		);
 	},
