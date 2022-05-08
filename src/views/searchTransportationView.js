@@ -46,8 +46,10 @@ function SearchTransportationView(props) {
 						/>
 					</div>
 				</div>
-				<div class="column">
-					<button class="button is-rounded">?</button>
+				
+				<div class="notification">
+  					<button class="delete"></button>
+					Lorem ipsum
 				</div>
 			</div>
 			<button onClick={getAlternatives} class="button is-primary">
