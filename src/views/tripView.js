@@ -4,7 +4,7 @@ import "charts.css";
 const TripView = {
     props: ['trip', 'onTransportDeletion', 'onAlternativesSearch'],
     mounted (){
-        this.renderChartEvents();
+        //this.renderChartEvents();
     },
     methods: {
         renderPieChartABC(addedTransports){
@@ -51,30 +51,30 @@ const TripView = {
 
         if (this.trip.transportations.length > 0) {
             return (
-<div>
-        <div class="card box">
-          <h2 class="title is-4">
-            Overall Co2:{" "}
-            <b>
-              {" "}
-              {this.trip.transportations
-                .reduce(this.calculateOverallCo2CB, 0)
-                .toFixed(2)}
-            </b>{" "}
-            kg Co2{" "}
-          </h2>
-          <div class="card-content">
-            {this.renderPieChartABC(this.trip.transportations)}
-          </div>
-          <a class="button" href="https://store.compensate.com" target="_blank">
-            Compensate{" "}
-            {this.trip.transportations
-              .reduce((prev, curr) => prev + curr.co2 / 1000, 0.0)
-              .toFixed(2)}
-            t of Co2 emissions
-          </a>
-        </div>
-      </div>
+                <div>
+                <div class="card box">
+                  <h2 class="title is-4">
+                    Overall Co2:{" "}
+                    <b>
+                      {" "}
+                      {this.trip.transportations
+                        .reduce(this.calculateOverallCo2CB, 0)
+                        .toFixed(2)}
+                    </b>{" "}
+                    kg Co2{" "}
+                  </h2>
+                  <div class="card-content">
+                    {this.renderPieChartABC(this.trip.transportations)}
+                  </div>
+                  <a class="button" href="https://store.compensate.com" target="_blank">
+                    Compensate{" "}
+                    {this.trip.transportations
+                      .reduce((prev, curr) => prev + curr.co2 / 1000, 0.0)
+                      .toFixed(2)}
+                    t of Co2 emissions
+                  </a>
+                </div>
+              </div>
             );
         }
       }

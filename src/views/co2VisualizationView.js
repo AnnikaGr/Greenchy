@@ -49,7 +49,7 @@ function renderData(co2_data, activity_worst_emissions, onSelectTransport) {
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
-          height="100vh"
+          height="1200px"
           width="25%"
         >
           <g class="Bars">
@@ -76,7 +76,7 @@ function renderData(co2_data, activity_worst_emissions, onSelectTransport) {
 function drawBar(emissions, activity_worst_emissions) {
   // order of point coordinates (x,y): top left   top right   bottom right  bottom left
 
-  const max_height = 600;
+  const max_height = 1200;
   let scale_factor = normalizeNumber(emissions, activity_worst_emissions);
   let height = scale_factor * max_height;
   const shape = `0,0   200,0   200,${height}   0,${height}`;
