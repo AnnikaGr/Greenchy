@@ -12,6 +12,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@sweetalert2/theme-bulma": "^5.0.10",
     "animejs": "^3.2.1",
     "apexcharts": "^3.35.0",
     "bodymovin": "^4.13.0",
@@ -22,6 +23,7 @@
     "firebase": "^9.6.8",
     "firebaseui": "^6.0.1",
     "node-sass": "^7.0.1",
+    "sweetalert2": "^11.4.12",
     "vue": "^3.2.13",
     "vue-apexcharts": "^1.6.2",
     "vue-router": "^4.0.14",

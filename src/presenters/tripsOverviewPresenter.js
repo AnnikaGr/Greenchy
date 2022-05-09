@@ -1,5 +1,6 @@
 import Trip from "@/models/trip"
 import TripOverviewView from "@/views/tripsOverviewView"
+import Swal from "sweetalert2"
 
 const TripsOverview = {
     props: ["userModel"],
@@ -25,7 +26,18 @@ const TripsOverview = {
         }
         
         function removeTrip(trip) {
-            me.userModel.tripsModel.removeTrip(trip)
+            //me.userModel.tripsModel.removeTrip(trip)
+            Swal.fire({
+                title: 'Do you want to delete the trip?',
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+              }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    me.userModel.tripsModel.removeTrip(trip)
+                  Swal.fire('Delete!', '', 'info')
+                }
+              })
         }
 
         function changeTripName(name) {
