@@ -36,16 +36,28 @@ function SearchTransportationView(props) {
         </article>
       );
     } else if (props.searchErrorCode === 3) {
-      return (<article class="message is-error mt-5">
+      return (
+        <article class="message is-error mt-5">
           <div class="message-body">
             <p>You have to have at least 1 passenger</p>
           </div>
-        </article>)
+        </article>
+      );
     }
   }
   return (
     <div class="searchForm is-fluid">
-      <h2 class="title is-4"> Search for transportation alternatives </h2>
+      <span class="title is-4"> Add a journey to your trip </span>
+      <button
+        class="button is-rounded is-small"
+        onClick={() =>
+          Swal.fire(
+            "We use Climatiq API that uses emission factors from a range of validated sources available in the Open Emission Factor Database https://www.climatiq.io/explorer"
+          )
+        }
+      >
+        ?
+      </button>
       {renderSearchError()}
       <div class="columns">
         <div class="column">
@@ -54,7 +66,7 @@ function SearchTransportationView(props) {
           </label>
           <div class="input-field-wrapper">
             <input
-              class="input block"
+              class="input block "
               type="number"
               id="distance-input"
               name="distance-input"
@@ -79,18 +91,7 @@ function SearchTransportationView(props) {
           </div>
         </div>
 
-        <div class="column">
-          <button
-            class="button is-rounded"
-            onClick={() =>
-              Swal.fire(
-                "We use Climatiq API that uses emission factors from a range of validated sources available in the Open Emission Factor Database https://www.climatiq.io/explorer"
-              )
-            }
-          >
-            ?
-          </button>
-        </div>
+        <div class="column"></div>
       </div>
 
       <button onClick={getAlternatives} class="button is-primary">
