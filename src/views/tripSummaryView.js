@@ -11,6 +11,7 @@ const TripSummaryView = {
 			labels.push('' + element.modeOfTransport + ' ' + element.co2.toFixed(1) + ' kg Co2' + '<button style="font-size: 10px; margin-left: 5px;">' + 'X' + '</button>');
 			series.push(element.co2);
 		});
+
 		var options = {
 			chart: {
 				type: 'donut',
@@ -66,7 +67,6 @@ const TripSummaryView = {
 				labels: labels
 			}
 			this.chart.updateOptions(newOptions)
-			this.chart.render()
 		}
 	},
 	render() {
@@ -87,7 +87,7 @@ const TripSummaryView = {
 						kg Co2{" "} per passenger
 					</h2>
 					<div class="card-content">
-						<div id="chart" />
+						<div id="chart"></div>
 					</div>
 					{this.transportations && this.transportations.length > 0 ?
 					(

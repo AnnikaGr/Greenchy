@@ -6,6 +6,11 @@ const Trip = {
     render() {
         const component = this;
         const trip = this.userModel.tripsModel.getTrip(+this.$route.params.tripId)
+
+        function onTransportDeletionABC(transport, id) {
+            component.userModel.tripsModel.removeTransportation(id, transport);
+        }
+
         return (
             <div class="page-wrapper container is-fluid">
                 <div class="box mt-5 has-text-centered">
@@ -16,7 +21,7 @@ const Trip = {
                         <Transportation userModel={component.userModel} trip={trip}/>
                     </div>
                     <div class="column is-one-half">
-                        <TripSummary userModel={component.userModel} trip={trip}/>
+                        <TripSummary onTransportDeletion={onTransportDeletionABC} trip={trip}/>
                     </div>
                 </div>
             </div>
