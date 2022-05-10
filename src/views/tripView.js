@@ -4,7 +4,7 @@ import "charts.css";
 const TripView = {
     props: ['trip', 'onTransportDeletion', 'onAlternativesSearch'],
     mounted (){
-        //this.renderChartEvents();
+        this.renderChartEvents();
     },
     methods: {
         renderPieChartABC(addedTransports){
@@ -16,11 +16,6 @@ const TripView = {
                 series.push(element.co2);
             });
             var options = {
-                plotOptions: {
-                    pie: {
-                      expandOnClick: false
-                    }
-                  },
                     chart: {
                         type: 'donut',
                         events: {
@@ -28,6 +23,11 @@ const TripView = {
                                 this.onTransportDeletion(addedTransports[chartContext], this.trip.id);
                             }
                         },
+                        legend: {
+                            onItemClick: {
+                                toggleDataSeries: false
+                            },
+                          },
                     },
                     tooltip: {
                         enabled: false
@@ -49,7 +49,6 @@ const TripView = {
     },
     render (){
 
-        if (this.trip.transportations.length > 0) {
             return (
                 <div>
                 <div class="card box">
@@ -63,7 +62,7 @@ const TripView = {
                     </b>{" "}
                     kg Co2{" "}
                   </h2>
-                  <div class="card-content">
+                  <div  class="card-content">
                     {this.renderPieChartABC(this.trip.transportations)}
                   </div>
                   <a class="button" href="https://store.compensate.com" target="_blank">
@@ -76,7 +75,7 @@ const TripView = {
                 </div>
               </div>
             );
-        }
+
       }
     }
    

@@ -18,79 +18,84 @@ const WelcomePageView = {
   },
   render() {
     return (
-      <section class="page-wrapper startpage columns is-vcentered">
-        <div class="column">
-          <div class="columns  is-centered">
-            <h1 class="title is-1 has-text-white">Welcome to Greenchy</h1>
-          </div>
-          <div class="columns is-centered ">
-            <h2 class="subtitle is-5 has-text-white">
-              Keep track of your travel carbon emissions and stay green!
-            </h2>
-          </div>
-
-          <div class="planet-minigame column">
-            <div class="post">
-              <button
-                onClick={this.showLicense}
-                class="post__link button is-ghost is-small"
-                target="_blank"
-              >
-                License
-              </button>
-            </div>
-
-            <div class="planet-wrapper columns is-centered">
-              {renderPlanet()}
-            </div>
-
+      <section class="startpage hero is-fullheight-with-navbar is-vcentered">
+        <div class="columns hero-body">
+          <div class="column">
             <div class="columns is-centered">
-              <div class="instructions">
-                <p class="is-size-7 has-text-white">Use arrows to move</p>
-                <p class="is-size-7 has-text-white">Hold space for rain</p>
+              <h1 class="welcome-text title is-1 has-text-white">
+                Welcome to Greenchy
+              </h1>
+            </div>
+            <div class="columns is-centered ">
+              <h2 class="welcome-text subtitle is-5 has-text-white">
+                Keep track of your travel carbon emissions and stay green!
+              </h2>
+            </div>
+
+            <div class="planet-minigame column">
+              <div class="post">
+                <button
+                  onClick={this.showLicense}
+                  class="post__link button is-ghost is-small"
+                  target="_blank"
+                >
+                  License
+                </button>
+              </div>
+
+              <div class="planet-wrapper columns is-centered">
+                {renderPlanet()}
+              </div>
+
+              <div class="columns is-centered">
+                <div class="instructions">
+                  <p class="is-size-7 has-text-white">Use arrows to move</p>
+                  <p class="is-size-7 has-text-white">Hold space for rain</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="modal" id="license-modal">
-          <div class="modal-background" onClick={this.hideLicense}></div>
-          <div class="modal-content">
-            <div class="box">
-              <p class="is-size-4">Copyright for the World Animation </p>
-              <p class="is-size-6">
-                (c) 2022 by Mariusz Dabrowski
-                (https://codepen.io/MarioD/pen/EvMNqE)
-              </p>
-              <p class="is-size-6">
-                Permission was granted, free of charge, to any person obtaining
-                a copy of the software and associated documentation files (the
-                "Software"), to deal in the Software without restriction,
-                including without limitation the rights to use, copy, modify,
-                merge, publish, distribute, sublicense, and/or sell copies of
-                the Software, and to permit persons to whom the Software is
-                furnished to do so, subject to the following conditions: The
-                above copyright notice and this permission notice shall be
-                included in all copies or substantial portions of the Software.
-              </p>
+          <div class="modal" id="license-modal">
+            <div class="modal-background" onClick={this.hideLicense}></div>
+            <div class="modal-content">
+              <div class="box">
+                <p class="is-size-4">Copyright for the World Animation </p>
+                <p class="is-size-6">
+                  (c) 2022 by Mariusz Dabrowski
+                  (https://codepen.io/MarioD/pen/EvMNqE)
+                </p>
+                <p class="is-size-6">
+                  Permission was granted, free of charge, to any person
+                  obtaining a copy of the software and associated documentation
+                  files (the "Software"), to deal in the Software without
+                  restriction, including without limitation the rights to use,
+                  copy, modify, merge, publish, distribute, sublicense, and/or
+                  sell copies of the Software, and to permit persons to whom the
+                  Software is furnished to do so, subject to the following
+                  conditions: The above copyright notice and this permission
+                  notice shall be included in all copies or substantial portions
+                  of the Software.
+                </p>
 
-              <p class="is-size-6">
-                THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-                EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-                OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-                NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-                HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-                WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-                FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-                OTHER DEALINGS IN THE SOFTWARE.
-              </p>
+                <p class="is-size-6">
+                  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+                  KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+                  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+                  PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+                  COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+                  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+                  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+                </p>
+              </div>
             </div>
+            <button
+              class="modal-close is-large"
+              aria-label="close"
+              onClick={this.hideLicense}
+            ></button>
           </div>
-          <button
-            class="modal-close is-large"
-            aria-label="close"
-            onClick={this.hideLicense}
-          ></button>
         </div>
       </section>
     );
