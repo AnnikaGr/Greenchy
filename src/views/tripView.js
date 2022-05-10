@@ -75,7 +75,7 @@ const TripView = {
                         .reduce(this.calculateOverallCo2CB, 0)
                         .toFixed(2)}
                     </b>{" "}
-                    kg Co2{" "}
+                    kg Co2{" "} per passenger
                   </h2>
                   <div  class="card-content">
                     {this.renderPieChartABC(this.trip.transportations)}
@@ -83,9 +83,9 @@ const TripView = {
                   <a class="button" href="https://store.compensate.com" target="_blank">
                     Compensate{" "}
                     {this.trip.transportations
-                      .reduce((prev, curr) => prev + curr.co2 / 1000, 0.0)
+                      .reduce((prev, curr) => prev + curr.co2, 0.0)
                       .toFixed(2)}
-                    t of Co2 emissions
+                    kg of Co2 emissions
                   </a>
                 </div>
               </div>

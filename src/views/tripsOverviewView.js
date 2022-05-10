@@ -57,7 +57,7 @@ function TripsOverviewView(props) {
           >
             {" "}
             Your planned trips have used{" "}
-            {tripsModel.getCompleteEmission().toFixed(2)}kg Co2 out of a 2.3t
+            {tripsModel.getCompleteEmission().toFixed(2)}kg Co2 out of a 2300kg
             yearly budget to have a reasonable chance of limiting global heating
             to 1.5°C.
           </a>
