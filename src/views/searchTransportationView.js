@@ -1,4 +1,3 @@
-import InformationModal from "@/presenters/informationModalPresenter";
 import Swal from "sweetalert2";
 /* eslint-disable */
 function SearchTransportationView(props) {
@@ -50,7 +49,7 @@ function SearchTransportationView(props) {
 				</div>
 
 				<div class="column">
-					<button class="button is-rounded" onClick={() => Swal.fire("Hello Paloma")}>?</button>
+					<button class="button is-rounded" onClick={() => Swal.fire("We use Climatiq API that uses emission factors from a range of validated sources available in the Open Emission Factor Database https://www.climatiq.io/explorer")}>?</button>
 				</div>
 
 			</div>

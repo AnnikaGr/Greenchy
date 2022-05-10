@@ -27,15 +27,34 @@ const TripsOverview = {
         
         function removeTrip(trip) {
             //me.userModel.tripsModel.removeTrip(trip)
-            Swal.fire({
+            /*Swal.fire({
                 title: 'Do you want to delete the trip?',
                 showCancelButton: true,
                 confirmButtonText: 'Delete',
               }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     me.userModel.tripsModel.removeTrip(trip)
                   Swal.fire('Delete!', '', 'info')
+                }
+              })*/
+
+              Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    me.userModel.tripsModel.removeTrip(trip)
+
+                    Swal.fire(
+                        'Deleted!',
+                        'Your trip has been deleted.',
+                        'success'
+                    )
                 }
               })
         }
