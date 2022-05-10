@@ -5,6 +5,7 @@
 }
 
 .page-wrapper {
+    min-height: 100vh;
     background: radial-gradient(ellipse at center, #b5c755 0%, #258a2e 70%);
     overflow: hidden;
 }
@@ -17,6 +18,11 @@ html {
 
 .planet {
     z-index: 0;
+}
+
+.startpage {
+    background: radial-gradient(ellipse at center, #b5c755 0%, #258a2e 70%);
+    overflow: hidden;
 }
 
 @media screen and (max-width: 1000px){

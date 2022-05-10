@@ -18,7 +18,7 @@ const WelcomePageView = {
   },
   render() {
     return (
-      <section class="page-wrapper hero is-fullheight-with-navbar is-vcentered">
+      <section class="startpage hero is-fullheight-with-navbar is-vcentered">
         <div class="columns hero-body">
           <div class="column">
             <div class="columns is-centered">
