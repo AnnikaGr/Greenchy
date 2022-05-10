@@ -34,6 +34,7 @@ const AddTransportation = {
       if(parseFloat(value) < 1) {
         component.errorCode = 3
       } else {
+        component.errorCode = 0
         component.passengers = value;
       }
     }

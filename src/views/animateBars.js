@@ -8,9 +8,9 @@ function animateBars() {
   let animateGreenBars = anime({
     targets: [].slice.call(bars, 0).reverse(),
     scaleY: [0.01, 1],
-    easing: barsEasing,
-    duration: 2000,
-    delay: 500,
+    easing: 'easeInOutCubic',
+    duration: 3000,
+    delay: 100,
     autoplay: true,
   });
 }
