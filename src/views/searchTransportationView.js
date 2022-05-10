@@ -15,17 +15,32 @@ function SearchTransportationView(props) {
 
   function renderSearchError() {
     if (props.searchErrorCode === 0) {
-      return false
+      return false;
     } else if (props.searchErrorCode === 1) {
-      return <h5 class="title is-5">Input a distance and a number of passengers to look for transportation alternatives</h5>
-
+      return (
+        <article class="message is-error mt-5">
+          <div class="message-body">
+            <p>
+              Input a distance and a number of passengers to look for
+              transportation alternatives
+            </p>
+          </div>
+        </article>
+      );
     } else if (props.searchErrorCode === 2) {
-      return <h5 class="title is-5 has-text-danger">Do not use negative numbers.</h5>
+      return (
+        <article class="message is-error mt-5">
+          <div class="message-body">
+            <p>Do not use negative numbers.</p>
+          </div>
+        </article>
+      );
     }
   }
   return (
     <div class="searchForm is-fluid">
       <h2 class="title is-4"> Add transportation </h2>
+      {renderSearchError()}
       <div class="columns">
         <div class="column">
           <label class="subtitle is-5" for="distance-input">
@@ -71,7 +86,7 @@ function SearchTransportationView(props) {
           </button>
         </div>
       </div>
-      {renderSearchError()}
+
       <button onClick={getAlternatives} class="button is-primary">
         Compare alternatives
       </button>
