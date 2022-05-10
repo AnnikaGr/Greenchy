@@ -55,7 +55,7 @@ const TripView = {
             )
         },
         renderChartEvents(){
-            this.onAlternativesSearch(null,null);
+            this.onAlternativesSearch();
         },
         calculateOverallCo2CB(sum, val){
             return sum + val.co2
