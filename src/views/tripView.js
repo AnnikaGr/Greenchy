@@ -1,96 +1,110 @@
 import "charts.css";
-
+import ApexCharts from "apexcharts";
 
 const TripView = {
-    props: ['trip', 'onTransportDeletion', 'onAlternativesSearch'],
-    mounted (){
-        //this.renderChartEvents();
-    },
-    methods: {
-        renderPieChartABC(addedTransports){
-            var labels = [];
-            var series = [];
-    
-            addedTransports.forEach(element => {
-                labels.push( '' + element.modeOfTransport + ' ' + element.co2.toFixed(1) + ' kg Co2' + '<button style="font-size: 10px; margin-left: 5px;">' + 'X' + '</button>' );
-                series.push(element.co2);
-            });
-            var options = {
-                    chart: {
-                        type: 'donut',
-                        events: {
-                            legendClick: (seriesIndex, chartContext) => {
-                                this.onTransportDeletion(addedTransports[chartContext], this.trip.id);
-                            }
-                        },
-                        legend: {
-                            onItemClick: {
-                                toggleDataSeries: false
-                            },
-                          },
-                    },
-                    responsive: [
-                        {
-                          breakpoint: 1300,
-                          options: {
-                            chart: {
-                                width: "100%",
-                                height: 380,
-                                type: "donut"
-                              },
-                            legend: {
-                              position: "bottom"
-                            }
-                          }
-                        }
-                      ],
-                    tooltip: {
-                        enabled: false
-                    },
-                labels: labels,
-                
-        }
-            return(
-                <apexchart width="500"  options={options} series={series}></apexchart> 
-            )
-        },
-        renderChartEvents(){
-            this.onAlternativesSearch();
-        },
-        calculateOverallCo2CB(sum, val){
-            return sum + val.co2
-        }
-    },
-    render (){
+	props: ['tripId', 'transportations', 'onTransportDeletion', 'onAlternativesSearch'],
+	mounted() {
+		//this.renderChartEvents();
 
-            return (
-                <div>
-                <div class="card box p-6">
-                  <h2 class="title is-4">
-                    Overall Co2:{" "}
-                    <b>
-                      {" "}
-                      {this.trip.transportations
-                        .reduce(this.calculateOverallCo2CB, 0)
-                        .toFixed(2)}
-                    </b>{" "}
-                    kg Co2{" "} per passenger
-                  </h2>
-                  <div  class="card-content">
-                    {this.renderPieChartABC(this.trip.transportations)}
-                  </div>
-                  <a class="button" href="https://store.compensate.com" target="_blank">
-                    Compensate{" "}
-                    {this.trip.transportations
-                      .reduce((prev, curr) => prev + curr.co2, 0.0)
-                      .toFixed(2)}
-                    kg of Co2 emissions
-                  </a>
-                </div>
-              </div>
-            );
+		var labels = [];
+		var series = [];
 
-      }
-    }
-   
-  export default TripView;
+		this.transportations.forEach(element => {
+			labels.push('' + element.modeOfTransport + ' ' + element.co2.toFixed(1) + ' kg Co2' + '<button style="font-size: 10px; margin-left: 5px;">' + 'X' + '</button>');
+			series.push(element.co2);
+		});
+		var options = {
+			chart: {
+				type: 'donut',
+				width: '500',
+				events: {
+					legendClick: (seriesIndex, chartContext) => {
+						this.onTransportDeletion(this.transportations[chartContext], this.tripId);
+					}
+				},
+				legend: {
+					onItemClick: {
+						toggleDataSeries: false
+					},
+				},
+			},
+			responsive: [
+				{
+					breakpoint: 1300,
+					options: {
+						chart: {
+							width: "100%",
+							height: 380,
+							type: "donut"
+						},
+						legend: {
+							position: "bottom"
+						}
+					}
+				}
+			],
+			tooltip: {
+				enabled: false
+			},
+			series: series,
+			labels: labels
+		}
+
+		this.chart = new ApexCharts(document.querySelector("#chart"), options)
+		this.chart.render()
+	},
+	updated() {
+		var labels = [];
+		var series = [];
+
+		this.transportations.forEach(element => {
+			labels.push('' + element.modeOfTransport + ' ' + element.co2.toFixed(1) + ' kg Co2' + '<button style="font-size: 10px; margin-left: 5px;">' + 'X' + '</button>');
+			series.push(element.co2);
+		});
+
+		if (this.chart){
+			const newOptions = {
+				series: series,
+				labels: labels
+			}
+			this.chart.updateOptions(newOptions)
+			this.chart.render()
+		}
+	},
+	render() {
+		function calculateOverallCo2CB(sum, val) {
+			return sum + val.co2
+		}
+		return (
+			<div>
+				<div class="card box p-6">
+					<h2 class="title is-4">
+						Overall Co2:{" "}
+						<b>
+							{" "}
+							{this.transportations
+								.reduce(calculateOverallCo2CB, 0)
+								.toFixed(2)}
+						</b>{" "}
+						kg Co2{" "} per passenger
+					</h2>
+					<div class="card-content">
+						<div id="chart" />
+					</div>
+					{this.transportations && this.transportations.length > 0 ?
+					(
+					<a class="button" href="https://store.compensate.com" target="_blank">
+						Compensate{" "}
+						{this.transportations
+							.reduce((prev, curr) => prev + curr.co2, 0.0)
+							.toFixed(2)}
+						kg of Co2 emissions
+					</a>) : false}
+				</div>
+			</div>
+		);
+
+	}
+}
+
+export default TripView;

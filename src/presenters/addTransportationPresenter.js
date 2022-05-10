@@ -127,7 +127,8 @@ const AddTransportation = {
           </div>
           <div class="column is-one-half">
             <TripView
-              trip={component.trip}
+              tripId={component.trip.id}
+              transportations={component.trip.transportations}
               onTransportDeletion={onTransportDeletionABC}
               onAlternativesSearch={onAlternativesSearchACB}
             />
