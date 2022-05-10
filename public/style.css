@@ -452,3 +452,17 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+
+/**----Bar visualization responsiveness----*/
+@media screen and (max-width: 769px) {
+    .bar {
+        display: none;
+    }
+    .searchForm {
+        text-align: center;
+    }
+    .input-field-wrapper{
+        margin:auto
+    }
+}

@@ -97,8 +97,8 @@ const AddTransportation = {
         </div>
         {}
         <div class="columns">
-          <div class="column ">
-            <div class="box">
+          <div class="column">
+            <div class="box p-6">
               <SearchTransportationView
                 onDistanceInputChange={onDistanceInputChangeACB}
                 onPassengersInputChange={onPassengersInputChangeACB}
