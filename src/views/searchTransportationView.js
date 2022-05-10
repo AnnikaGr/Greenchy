@@ -21,7 +21,7 @@ function SearchTransportationView(props) {
         <article class="message is-error mt-5">
           <div class="message-body">
             <p>
-              Input a distance and a number of passengers to look for
+              Input a valid distance and a number of passengers to look for
               transportation alternatives
             </p>
           </div>
@@ -31,10 +31,16 @@ function SearchTransportationView(props) {
       return (
         <article class="message is-error mt-5">
           <div class="message-body">
-            <p>Do not use negative numbers.</p>
+            <p>Please input a positive travel distance</p>
           </div>
         </article>
       );
+    } else if (props.searchErrorCode === 3) {
+      return (<article class="message is-error mt-5">
+          <div class="message-body">
+            <p>You have to have at least 1 passenger</p>
+          </div>
+        </article>)
     }
   }
   return (

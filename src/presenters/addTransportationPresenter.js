@@ -31,17 +31,23 @@ const AddTransportation = {
     }
 
     function onPassengersInputChangeACB(value) {
-      component.passengers = value;
+      if(parseFloat(value) < 1) {
+        component.errorCode = 3
+      } else {
+        component.passengers = value;
+      }
     }
 
     function onAlternativesSearchACB() {
       //Check empty parameters
       if(component.passengers === "" || component.distance === ""){
         component.errorCode = 1
+        component.promiseState = {}
       //Check negative paramenters
-      }else if(parseFloat(component.passengers) < 1 || parseFloat(component.distance) <0){
+      } else if(parseFloat(component.distance) < 0){
         component.errorCode = 2
-      }else{
+        component.promiseState = {}
+      } else{
         component.errorCode = 0
         resolvePromise(
           getEmissionsForTravelAlternatives(parseFloat(component.distance)),
