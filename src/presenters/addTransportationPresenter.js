@@ -13,6 +13,7 @@ const AddTransportation = {
   props: ["userModel"],
   data() {
     return {
+      errorCode: 0,
       distance: "",
       passengers: "",
       promiseState: {},
@@ -25,14 +26,6 @@ const AddTransportation = {
   render() {
     const component = this;
 
-    function closeExampleModal() {
-      this.exampleModalActive = false
-    }
-
-    function openExampleModal() {
-      this.exampleModalActive = true
-    }
-
     function onDistanceInputChangeACB(value) {
       component.distance = value;
     }
@@ -42,10 +35,19 @@ const AddTransportation = {
     }
 
     function onAlternativesSearchACB() {
-      resolvePromise(
-        getEmissionsForTravelAlternatives(parseFloat(component.distance)),
-        component.promiseState
-      );
+      //Check empty parameters
+      if(component.passengers === "" || component.distance === ""){
+        component.errorCode = 1
+      //Check negative paramenters
+      }else if(parseFloat(component.passengers) < 1 || parseFloat(component.distance) <0){
+        component.errorCode = 2
+      }else{
+        component.errorCode = 0
+        resolvePromise(
+          getEmissionsForTravelAlternatives(parseFloat(component.distance)),
+          component.promiseState
+        );
+      }
     }
 
     function getEmissionsForTravelAlternatives(distance) {
@@ -101,6 +103,7 @@ const AddTransportation = {
                 onDistanceInputChange={onDistanceInputChangeACB}
                 onPassengersInputChange={onPassengersInputChangeACB}
                 onAlternativesSearch={onAlternativesSearchACB}
+                searchErrorCode={component.errorCode}
               />
 
               {promiseNoData(component.promiseState) || (
