@@ -17,7 +17,7 @@ function TripsOverviewView(props) {
         </section>
 
         <div class="box">
-          <label class="title is-size-4">Add a trip </label>
+          <label class="title is-size-4">Plan a new trip </label>
           <div class="field has-addons">
             <p class="control">
               <input
@@ -25,6 +25,7 @@ function TripsOverviewView(props) {
                 type="text"
                 onChange={nameChangeACB}
                 value={props.tripName}
+                placeholder='Stockholm'
               />
             </p>
             <p class="control">

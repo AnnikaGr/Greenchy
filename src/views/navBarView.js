@@ -1,4 +1,4 @@
-import { RouterLink } from "vue-router";
+
 function NavBarView(props) {
     const toggleBurger = () => {
         let burgerIcon = document.getElementById('burger');
