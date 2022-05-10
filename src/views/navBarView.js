@@ -31,7 +31,7 @@ function NavBarView(props) {
                 <div class="navbar-menu" id='navItems'>
                     <div class="navbar-start">
                         {props.userLoggedIn ?
-                            (<router-link class="icon-text" to="/trips" class="navbar-item">
+                            (<router-link class="icon-text navbar-item" to="/trips">
                                 <span class="icon">
                                     <i class="fa-solid fa-suitcase-rolling"></i>
                                 </span>
