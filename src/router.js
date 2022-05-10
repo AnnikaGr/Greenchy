@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import AddTransportation from './presenters/addTransportationPresenter.js'
+import Trip from './presenters/tripPresenter.js'
 import Authentication from './presenters/authenticationPresenter.js'
 import TripsOverview from './presenters/tripsOverviewPresenter.js'
 import WelcomePage from './presenters/welcomePagePresenter.js'
@@ -39,7 +39,7 @@ const routes = [
     {
         path: '/trips/:tripId',
         name: 'trip',
-        component: AddTransportation,
+        component: Trip,
         meta: { requiresAuth: true },
         props: true
     }

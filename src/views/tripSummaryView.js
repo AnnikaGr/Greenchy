@@ -1,11 +1,9 @@
 import "charts.css";
 import ApexCharts from "apexcharts";
 
-const TripView = {
-	props: ['tripId', 'transportations', 'onTransportDeletion', 'onAlternativesSearch'],
+const TripSummaryView = {
+	props: ['tripId', 'transportations', 'onTransportDeletion'],
 	mounted() {
-		//this.renderChartEvents();
-
 		var labels = [];
 		var series = [];
 
@@ -107,4 +105,4 @@ const TripView = {
 	}
 }
 
-export default TripView;
+export default TripSummaryView;
