@@ -4,7 +4,7 @@ import "charts.css";
 const TripView = {
     props: ['trip', 'onTransportDeletion', 'onAlternativesSearch'],
     mounted (){
-        this.renderChartEvents();
+        //this.renderChartEvents();
     },
     methods: {
         renderPieChartABC(addedTransports){
@@ -56,7 +56,6 @@ const TripView = {
         },
         renderChartEvents(){
             this.onAlternativesSearch(null,null);
-            
         },
         calculateOverallCo2CB(sum, val){
             return sum + val.co2

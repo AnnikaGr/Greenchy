@@ -84,32 +84,15 @@ function TripsOverviewView(props) {
         <div class="column is-one-quarter is-centered">
             <button class="delete is-pulled-right" onClick={() => props.tripRemoved(trip)}> Remove
             </button>
-            <router-link to={"/trips/" + trip.id} class="box trip-card has-background-primary title has-text-white">
-              {trip.name}
+            <router-link to={"/trips/" + trip.id} class="box trip-card has-background-primary">
+              <a class="title has-text-white">{trip.name}</a>
+              <p class="has-text-white">
+                {trip.getOverallCo2().toFixed(2)}kg Co2
+              </p>
             </router-link>
-            <p class="has-text-white">
-              {trip.getOverallCo2().toFixed(2)}kg Co2
-            </p>
         </div>
       );
     }
-
-    /*function renderTripTile(trip) {
-      return (
-        <div class="column is-one-quarter is-centered">
-          <div class="box trip-card has-background-primary">
-          <button class="delete is-pulled-right" onClick={() => props.tripRemoved(trip)}> Remove
-            </button>
-            <router-link to={"/trips/" + trip.id} class="title has-text-white">
-              {trip.name}
-            </router-link>
-            <p class="has-text-white">
-              {trip.getOverallCo2().toFixed(2)}kg Co2
-            </p>
-          </div>
-        </div>
-      );
-    }*/
   }
 }
 

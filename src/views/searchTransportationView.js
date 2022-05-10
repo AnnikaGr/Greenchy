@@ -45,7 +45,7 @@ function SearchTransportationView(props) {
   }
   return (
     <div class="searchForm is-fluid">
-      <h2 class="title is-4"> Add transportation </h2>
+      <h2 class="title is-4"> Search for transportation alternatives </h2>
       {renderSearchError()}
       <div class="columns">
         <div class="column">
@@ -101,4 +101,3 @@ function SearchTransportationView(props) {
 }
 
 export default SearchTransportationView;
-//{renderSearchError()}
