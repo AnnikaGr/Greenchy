@@ -66,7 +66,7 @@ const TripView = {
 
             return (
                 <div>
-                <div class="card box">
+                <div class="card box p-6">
                   <h2 class="title is-4">
                     Overall Co2:{" "}
                     <b>
