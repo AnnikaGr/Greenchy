@@ -18,14 +18,14 @@ function TripsOverviewView(props) {
 
         <div class="box">
           <label class="title is-size-4">Plan a new trip </label>
-          <div class="field has-addons">
+          <div class="field has-addons mt-3">
             <p class="control">
               <input
                 class="input"
                 type="text"
                 onChange={nameChangeACB}
                 value={props.tripName}
-                placeholder='Stockholm'
+                placeholder="Stockholm"
               />
             </p>
             <p class="control">
@@ -82,14 +82,22 @@ function TripsOverviewView(props) {
     function renderTripTile(trip) {
       return (
         <div class="column is-one-quarter is-centered">
-            <button class="delete is-pulled-right" onClick={() => props.tripRemoved(trip)}> Remove
-            </button>
-            <router-link to={"/trips/" + trip.id} class="box trip-card has-background-primary">
-              <a class="title has-text-white">{trip.name}</a>
-              <p class="has-text-white">
-                {trip.getOverallCo2().toFixed(2)}kg Co2
-              </p>
-            </router-link>
+          <button
+            class="delete is-pulled-right"
+            onClick={() => props.tripRemoved(trip)}
+          >
+            {" "}
+            Remove
+          </button>
+          <router-link
+            to={"/trips/" + trip.id}
+            class="box trip-card has-background-primary"
+          >
+            <a class="title has-text-white">{trip.name}</a>
+            <p class="has-text-white">
+              {trip.getOverallCo2().toFixed(2)}kg Co2
+            </p>
+          </router-link>
         </div>
       );
     }

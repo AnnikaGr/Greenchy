@@ -60,7 +60,7 @@ function SearchTransportationView(props) {
       </button>
       {renderSearchError()}
       <div class="columns">
-        <div class="column">
+        <div class="column mt-5">
           <label class="subtitle is-5" for="distance-input">
             Travel distance
           </label>
@@ -75,9 +75,9 @@ function SearchTransportationView(props) {
             <div class="placeholder subtitle is-6">km</div>
           </div>
         </div>
-        <div class="column">
+        <div class="column mt-5">
           <label class="subtitle is-5" for="passengers-input">
-            Passengers
+            No. of Passengers
           </label>
           <div class="input-field-wrapper">
             <input
@@ -90,8 +90,6 @@ function SearchTransportationView(props) {
             />
           </div>
         </div>
-
-        <div class="column"></div>
       </div>
 
       <button onClick={getAlternatives} class="button is-primary">
