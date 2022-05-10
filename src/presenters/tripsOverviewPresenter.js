@@ -26,18 +26,6 @@ const TripsOverview = {
         }
         
         function removeTrip(trip) {
-            //me.userModel.tripsModel.removeTrip(trip)
-            /*Swal.fire({
-                title: 'Do you want to delete the trip?',
-                showCancelButton: true,
-                confirmButtonText: 'Delete',
-              }).then((result) => {
-                if (result.isConfirmed) {
-                    me.userModel.tripsModel.removeTrip(trip)
-                  Swal.fire('Delete!', '', 'info')
-                }
-              })*/
-
               Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",

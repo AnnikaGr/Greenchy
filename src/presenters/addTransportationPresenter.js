@@ -16,6 +16,7 @@ const AddTransportation = {
       distance: "",
       passengers: "",
       promiseState: {},
+      exampleModalActive: false,
     };
   },
   created() {
@@ -23,6 +24,15 @@ const AddTransportation = {
   },
   render() {
     const component = this;
+
+    function closeExampleModal() {
+      this.exampleModalActive = false
+    }
+
+    function openExampleModal() {
+      this.exampleModalActive = true
+    }
+
     function onDistanceInputChangeACB(value) {
       component.distance = value;
     }
@@ -83,6 +93,7 @@ const AddTransportation = {
         <div class="box mt-5 has-text-centered">
           <h1 class="title">{this.trip.name}</h1>
         </div>
+        {}
         <div class="columns">
           <div class="column ">
             <div class="box">
