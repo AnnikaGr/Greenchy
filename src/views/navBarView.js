@@ -30,56 +30,49 @@ function NavBarView(props) {
 
                 <div class="navbar-menu" id='navItems'>
                     <div class="navbar-start">
-                        <div class="navbar-item">
-                            <div class="buttons">
-                                {props.userLoggedIn ?
-                                    (<router-link class="icon-text navbar-item" to="/trips">
-                                        <span class="icon">
-                                            <i class="fa-solid fa-suitcase-rolling"></i>
-                                        </span>
-                                        <span>My Trips</span>
-                                    </router-link>) : false}
-                                    
-                                    <div>
-                                        <router-link class="icon-text navbar-item" to="/aboutus">
-                                            <span class="icon">
-                                                <i class="fa-solid fa-address-card"></i>
-                                            </span>
-                                            <span>About Us</span>
-                                        </router-link>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                        {props.userLoggedIn ?
+                            (<router-link class="icon-text navbar-item" to="/trips">
+                                <span class="icon">
+                                    <i class="fa-solid fa-suitcase-rolling"></i>
+                                </span>
+                                <span>My Trips</span>
+                            </router-link>) : false}
 
-                    <div class="navbar-end">
-                        <div class="navbar-item">
-                            <div class="buttons">
-                                {props.userLoggedIn ? (
-                                    <router-link
-                                        to="/welcome"
-                                        class="button is-light"
-                                        onClick={() => props.signOut()}
-                                    >
-                                        Log out
+                        <router-link class="icon-text navbar-item" to="/aboutus">
+                            <span class="icon">
+                                <i class="fa-solid fa-address-card"></i>
+                            </span>
+                            <span>About Us</span>
+                        </router-link>
+                    </div>
+                </div>
+
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            {props.userLoggedIn ? (
+                                <router-link
+                                    to="/welcome"
+                                    class="button is-light"
+                                    onClick={() => props.signOut()}
+                                >
+                                    Log out
+                                </router-link>
+                            ) : (
+                                <div>
+                                    <router-link to="/signup" class="button is-light">
+                                        Sign up
                                     </router-link>
-                                ) : (
-                                    <div>
-                                        <router-link to="/signup" class="button is-light">
-                                            Sign up
-                                        </router-link>
-                                        <router-link to="/login" class="button is-primary">
-                                            <strong>Log in</strong>
-                                        </router-link>
-                                    </div>
-                                )}
-                            </div>
+                                    <router-link to="/login" class="button is-primary">
+                                        <strong>Log in</strong>
+                                    </router-link>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
-            </nav>
-        </div>
+            </nav >
+        </div >
     );
 }
 
