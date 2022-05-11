@@ -6,31 +6,30 @@ function TripsOverviewView(props) {
 	}
 
 	function renderProgressBar() {
-			return (
-				<div class="block is-flex-direction-row">
+		return (
+			<div class="block is-flex-direction-row">
+				<div>
 					<div>
-						<span class="icon-text">
-							<span>Your planned trips have used {props.completeEmission.toFixed(2)} kg Co2 out of a 2300kg
+						<span>Your planned trips have used {props.completeEmission.toFixed(2)} kg Co2 out of a 2300kg
 							yearly budget to have a reasonable chance of limiting global heating
 							to 1.5°C.</span>
-							<a class="icon" href="https://www.oxfam.org/en/press-releases/carbon-emissions-richest-1-set-be-30-times-15degc-limit-2030" target="_blank">
+						<a class="icon" href="https://www.oxfam.org/en/press-releases/carbon-emissions-richest-1-set-be-30-times-15degc-limit-2030" target="_blank">
 							<i class="fa-solid fa-circle-question"></i>
-							</a>
-						</span>
-
+						</a>
 					</div>
-					<progress
-						class="progress is-danger is-large"
-						value={Math.min(
-							100,
-							100 * (props.completeEmission / 2300)
-						)}
-						max="100"
-					></progress>
 				</div>
-			);
+				<progress
+					class="progress is-danger is-large"
+					value={Math.min(
+						100,
+						100 * (props.completeEmission / 2300)
+					)}
+					max="100"
+				></progress>
+			</div>
+		);
 	}
-	
+
 	function renderTripTiles() {
 		if (props.trips) {
 			return props.trips.map(renderTripTile);
