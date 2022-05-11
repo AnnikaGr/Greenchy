@@ -30,13 +30,27 @@ function NavBarView(props) {
 
                 <div class="navbar-menu" id='navItems'>
                     <div class="navbar-start">
-                        {props.userLoggedIn ?
-                            (<router-link class="icon-text navbar-item" to="/trips">
-                                <span class="icon">
-                                    <i class="fa-solid fa-suitcase-rolling"></i>
-                                </span>
-                                <span>My Trips</span>
-                            </router-link>) : false}
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                {props.userLoggedIn ?
+                                    (<router-link class="icon-text navbar-item" to="/trips">
+                                        <span class="icon">
+                                            <i class="fa-solid fa-suitcase-rolling"></i>
+                                        </span>
+                                        <span>My Trips</span>
+                                    </router-link>) : false}
+                                    
+                                    <div>
+                                        <router-link class="icon-text navbar-item" to="/aboutus">
+                                            <span class="icon">
+                                                <i class="fa-solid fa-address-card"></i>
+                                            </span>
+                                            <span>About Us</span>
+                                        </router-link>
+                                    </div>
+                                
+                            </div>
+                        </div>
                     </div>
 
                     <div class="navbar-end">

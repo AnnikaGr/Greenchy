@@ -3,6 +3,7 @@ import Trip from './presenters/tripPresenter.js'
 import Authentication from './presenters/authenticationPresenter.js'
 import TripsOverview from './presenters/tripsOverviewPresenter.js'
 import WelcomePage from './presenters/welcomePagePresenter.js'
+import AboutUs from './presenters/aboutUsPresenter.js'
 
 const routes = [
     {
@@ -35,6 +36,13 @@ const routes = [
         component: TripsOverview,
         meta: { requiresAuth: true },
         props: true
+    },
+    {
+        path: '/aboutus',
+        name: 'AboutUs',
+        displayName: 'AboutUs',
+        component: AboutUs,
+        meta: { requiresAuth: true },
     },
     {
         path: '/trips/:tripId',
