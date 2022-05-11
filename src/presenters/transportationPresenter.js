@@ -98,7 +98,7 @@ const Transportation = {
 
         {promiseNoData(component.promiseState) || (
           <Co2VisualizationView
-            class="mt-5"
+            class="mt-6"
             results={parseActivityData(
               component.promiseState.data,
               parseInt(component.passengers)
