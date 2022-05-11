@@ -146,7 +146,7 @@ function signUpWithFirebase(credentials) {
 	return createUserWithEmailAndPassword(auth, credentials.email, credentials.password)
 		.then((userCredential) => {
 			updateProfile(userCredential.user, { displayName: credentials.name })
-				.then((userCredential) => {
+				.then(() => {
 					// triggers the onAuthStateChanged observer
 					auth.updateCurrentUser(userCredential.user)
 				})
