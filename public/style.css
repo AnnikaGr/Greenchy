@@ -23,6 +23,10 @@
     }
 }
 
+.hidden {
+    display: none;
+}
+
 /*-----Start Page Background----------*/
 
 html {

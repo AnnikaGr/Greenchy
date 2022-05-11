@@ -66,7 +66,12 @@ const TripSummaryView = {
 				series: series,
 				labels: labels
 			}
-			this.chart.updateOptions(newOptions)
+			this.chart.updateOptions(newOptions, true)
+		}
+	},
+	beforeUnmount() {
+		if (this.chart) {
+			this.chart.destroy()
 		}
 	},
 	render() {
@@ -87,14 +92,14 @@ const TripSummaryView = {
 						kg Co2{" "} per passenger
 					</h2>
 					<div class="card-content">
-						<div id="chart"></div>
+						<div id="chart" class={this.transportations && this.transportations.length > 0 ? "" : "hidden"}></div>
 					</div>
 					{this.transportations && this.transportations.length > 0 ?
 					(
 					<a class="button" href="https://store.compensate.com" target="_blank">
 						Compensate{" "}
 						{this.transportations
-							.reduce((prev, curr) => prev + curr.co2, 0.0)
+							.reduce(calculateOverallCo2CB, 0.0)
 							.toFixed(2)}
 						kg of Co2 emissions
 					</a>) : false}
