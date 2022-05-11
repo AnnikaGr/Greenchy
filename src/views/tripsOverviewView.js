@@ -1,3 +1,5 @@
+import Swal from "sweetalert2"
+
 function TripsOverviewView(props) {
 	function nameChangeACB(event) {
 		props.nameChanged(event.target.value);
@@ -34,9 +36,30 @@ function TripsOverviewView(props) {
 			return props.trips.map(renderTripTile);
 		}
 		function renderTripTile(trip) {
+			function deleteTrip() {
+				Swal.fire({
+					title: 'Are you sure?',
+					text: "You won't be able to revert this!",
+					icon: 'warning',
+					showCancelButton: true,
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'Yes, delete it!'
+				}).then((result) => {
+					if (result.isConfirmed) {
+						props.tripRemoved(trip)
+
+						Swal.fire(
+							'Deleted!',
+							'Your trip has been deleted.',
+							'success'
+						)
+					}
+				})
+			}
 			return (
 				<div class="column is-narrow is-centered">
-					<button class="delete is-pulled-right" onClick={() => props.tripRemoved(trip)}> Remove
+					<button class="delete is-pulled-right" onClick={deleteTrip}> Remove
 					</button>
 					<router-link to={"/trips/" + trip.id} class="box trip-card has-background-primary">
 						<a class="title has-text-white">{trip.name}</a>

@@ -28,7 +28,7 @@ function AuthenticationView(props) {
 
                             {props.error.message ? <div class="has-text-danger">{props.error.message}</div> : ""}
 
-                            <a class="button is-primary" onClick={props.onSignInUp}>
+                            <a class="button is-primary" onClick={() => props.onSignInUp()}>
                                 {props.isSignUp ? "Sign Up" : "Sign In"}
                             </a>
                         </div>

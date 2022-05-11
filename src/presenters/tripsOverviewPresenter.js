@@ -1,6 +1,5 @@
 import Trip from "@/models/trip"
 import TripOverviewView from "@/views/tripsOverviewView"
-import Swal from "sweetalert2"
 
 const TripsOverview = {
     props: ["userModel"],
@@ -12,11 +11,11 @@ const TripsOverview = {
     render() {
         const me = this;
         if (this.userModel.loaded) {
-            return <TripOverviewView tripName={this.name} userName={this.userModel.displayName} completeEmission={this.userModel.tripsModel.getCompleteEmission()} trips={this.userModel.tripsModel.trips} nameChanged={changeTripName} newTrip={addTrip} tripRemoved={removeTrip}/>
+            return <TripOverviewView tripName={this.name} userName={this.userModel.displayName} completeEmission={this.userModel.tripsModel.getCompleteEmission()} trips={this.userModel.tripsModel.trips} nameChanged={changeTripName} newTrip={addTrip} tripRemoved={removeTrip} />
         } else {
             return <div class="pageloader is-active"><span class="title">Loading Trips...</span></div>
         }
-        
+
         function addTrip() {
             if (me.name !== "") {
                 const newTrip = new Trip(me.name)
@@ -24,27 +23,9 @@ const TripsOverview = {
                 me.userModel.tripsModel.addTrip(newTrip)
             }
         }
-        
-        function removeTrip(trip) {
-              Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                    me.userModel.tripsModel.removeTrip(trip)
 
-                    Swal.fire(
-                        'Deleted!',
-                        'Your trip has been deleted.',
-                        'success'
-                    )
-                }
-              })
+        function removeTrip(trip) {
+            me.userModel.tripsModel.removeTrip(trip)
         }
 
         function changeTripName(name) {
