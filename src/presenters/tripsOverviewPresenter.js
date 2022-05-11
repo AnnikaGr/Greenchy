@@ -12,7 +12,7 @@ const TripsOverview = {
     render() {
         const me = this;
         if (this.userModel.loaded) {
-            return <TripOverviewView tripName={this.name} userName={this.userModel.displayName} tripsModel={this.userModel.tripsModel} nameChanged={changeTripName} newTrip={addTrip} tripRemoved={removeTrip}/>
+            return <TripOverviewView tripName={this.name} userName={this.userModel.displayName} completeEmission={this.userModel.tripsModel.getCompleteEmission()} trips={this.userModel.tripsModel.trips} nameChanged={changeTripName} newTrip={addTrip} tripRemoved={removeTrip}/>
         } else {
             return <div class="pageloader is-active"><span class="title">Loading Trips...</span></div>
         }
