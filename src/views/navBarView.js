@@ -7,7 +7,7 @@ function NavBarView(props) {
     };
     return (
         <div>
-            <nav class="navbar" role="navigation" aria-label="main navigation">
+            <nav class="navbar is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
                     <router-link class="navbar-item" to="/welcome">
                         <img src="https://drive.google.com/uc?id=1qOlFyxNasCEqDCBQsUyhMhdEYN2NDwBY"></img>

@@ -45,8 +45,7 @@ function SearchTransportationView(props) {
 	}
 	return (
 		<div class="searchForm is-fluid">
-			<div class="title is-4">
-				<span class="icon-text">
+			<div class="icon-text title is-4">
 					<span>Add a journey to your trip</span>
 					
 					<a class="icon" onClick={() => 
@@ -71,7 +70,6 @@ function SearchTransportationView(props) {
 					  })}>
 						<i class="fa-solid fa-circle-question"></i>
 					</a>
-				</span>
 			</div>
 			{renderSearchError()}
 			<div class="columns">
@@ -106,9 +104,11 @@ function SearchTransportationView(props) {
 					</div>
 				</div>
 			</div>
-
 			<button onClick={getAlternatives} class="button is-primary">
-				Compare alternatives
+				<span class="icon">
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</span>
+				<span> Compare alternatives</span>
 			</button>
 		</div>
 	);

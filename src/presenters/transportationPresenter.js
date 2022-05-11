@@ -9,7 +9,7 @@ import {
 import resolvePromise from "@/utils.js";
 
 const Transportation = {
-    props: ["userModel", "trip"],
+    props: ["onSelectTransport", "trip"],
     data() {
         return {
             errorCode: 0,
@@ -78,13 +78,12 @@ const Transportation = {
         }
 
         function onSelectTransportACB(transportSelection) {
-            component.userModel.tripsModel.addTransportation(
-                component.trip.id,
+            component.onSelectTransport(
                 parseFloat(component.distance),
                 parseInt(component.passengers),
                 transportSelection[0],
                 transportSelection[1]
-            );
+            )
             component.promiseState = {};
         }
 

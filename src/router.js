@@ -66,7 +66,7 @@ function addAuthRequirementToRouting(userModel) {
                 next() 
             } 
         } else { 
-            next() // make sure to always call next()! 
+            next()
         } 
     }) 
 }

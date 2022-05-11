@@ -11,6 +11,16 @@ const Trip = {
             component.userModel.tripsModel.removeTransportation(id, transport);
         }
 
+        function onSelectTransportACB(distance, passengers, modeOfTransport, co2) {
+            component.userModel.tripsModel.addTransportation(
+                trip.id,
+                distance,
+                passengers,
+                modeOfTransport,
+                co2
+            );
+        }
+
         return (
             <div class="page-wrapper container is-fluid">
                 <div class="box mt-5 has-text-centered">
@@ -18,7 +28,7 @@ const Trip = {
                 </div>
                 <div class="columns">
                     <div class="column">
-                        <Transportation userModel={component.userModel} trip={trip}/>
+                        <Transportation onSelectTransport={onSelectTransportACB} trip={trip}/>
                     </div>
                     <div class="column is-one-half">
                         <TripSummary onTransportDeletion={onTransportDeletionABC} trip={trip}/>
