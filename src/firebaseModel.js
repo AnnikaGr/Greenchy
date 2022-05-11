@@ -17,7 +17,7 @@ function updateFirebaseFromModel(userModel) {
         if (payload) {
             if (payload.addTrip) {
                 firebase.database().ref(REF + "/trips/" + payload.addTrip.id).set(payload.addTrip)
-                updateTripFromFirebase(userModel, payload.addTrip)
+                updateTripFromFirebase(userModel, payload.addTrip.id)
             }
             if (payload.removeTrip) {
                 firebase.database().ref(REF + "/trips/" + payload.removeTrip.id).set(null)
@@ -42,7 +42,9 @@ function updateModelFromFirebase(userModel) {
 
     firebase.database().ref(REF + "/trips").on("child_added", (data) => {
         if (!userModel.tripsModel.getTrip(+data.key)) {
-            userModel.tripsModel.addTrip(data.val())
+            const {id, name, transportations = []} = data.val()
+            userModel.tripsModel.addTrip(new Trip(name, transportations, id))
+            updateTripFromFirebase(userModel, id)
         }
     })
     firebase.database().ref(REF + "/trips").on("child_removed", (data) => {
@@ -54,23 +56,24 @@ function updateModelFromFirebase(userModel) {
 
     firebase.database().ref(REF + "/trips").once("value").then(data => {
         data.forEach(firebaseTrip => {
-            const trip = userModel.tripsModel.getTrip(+firebaseTrip.key)
-            updateTripFromFirebase(userModel, trip)
+            updateTripFromFirebase(userModel, +firebaseTrip.key)
         })
     })
 }
 
-function updateTripFromFirebase(userModel, trip) {
-    const REF_TRIP = userModel.uid + "/trips/" + trip.id
+function updateTripFromFirebase(userModel, tripId) {
+    const REF_TRIP = userModel.uid + "/trips/" + tripId
 
     firebase.database().ref(REF_TRIP + "/transportations").on("child_added", (data) => {
-        if (!trip.transportations.find((transp) => transp.id === +data.key)) {
+        const trip = userModel.tripsModel.getTrip(tripId)
+        if (trip && !trip.transportations.find((transp) => transp.id === +data.key)) {
             trip.transportations = [...trip.transportations, data.val()]
         }
     })
     firebase.database().ref(REF_TRIP + "/transportations").on("child_removed", (data) => {
+        const trip = userModel.tripsModel.getTrip(tripId)
         const transportationToRemove = trip.transportations.find(transp => transp.id === +data.key)
-        if (transportationToRemove) {
+        if (trip && transportationToRemove) {
             userModel.tripsModel.removeTransportation(trip.id, transportationToRemove)
         }
     })
