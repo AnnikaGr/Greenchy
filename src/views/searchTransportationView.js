@@ -48,7 +48,27 @@ function SearchTransportationView(props) {
 			<div class="title is-4">
 				<span class="icon-text">
 					<span>Add a journey to your trip</span>
-					<a class="icon" onClick={() => Swal.fire("We use Climatiq API that uses emission factors from a range of validated sources available in the Open Emission Factor Database https://www.climatiq.io/explorer")}>
+					
+					<a class="icon" onClick={() => 
+					Swal.fire({
+						title: 'How we calculate your spend?',
+						text: 'We use Climatiq, an open database that allows you to collect emissions data, automate carbon emission calculations, and ultimately, to make data-supported sustainability decisions',
+						html:
+							'We use <a href="https://www.climatiq.io/">Climatiq.io</a>, ' +
+							'an open database that allows you to collect emissions data, automate carbon emission calculations, and ultimately, to make data-supported sustainability decisions.<br>'+
+							'<br>'+
+							'<b>Greenchy</b> shows you three kind of traveling alternatives:<br>' +
+							'<br>'+
+							'<i>Road Travel: </i> Emission intensity of average passenger car long distance. Updated April 2020. Provided by the HBEFA & Yearly Compte des Transports. <br>'+
+							'<br>'+
+							'<i>Air Travel: </i> Emission intensity of domestic flight in a passenger jet including emissions from combustion and radiative forcing (RF) effect reflecting impact of contrails and high-altitude release of GHGs but not upstream fuel emissions. No distance uplift required as based on fuel delivery data. <br>'+
+							'<br>'+
+							'<i>Rail Travel: </i> Emission intensity for international rail passenger train including fuel consumption. The international rail factor is based on a passenger-km weighted average of the conversion factors for different Eurostar routes.',
+						imageUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/fu3npy69gwxg0geh7us1',
+						imageWidth: 200,
+						imageHeight: 200,
+						imageAlt: 'Custom image',
+					  })}>
 						<i class="fa-solid fa-circle-question"></i>
 					</a>
 				</span>
