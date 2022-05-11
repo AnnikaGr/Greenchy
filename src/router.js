@@ -42,7 +42,7 @@ const routes = [
         name: 'AboutUs',
         displayName: 'AboutUs',
         component: AboutUs,
-        meta: { requiresAuth: true },
+        meta: { requiresAuth: false },
     },
     {
         path: '/trips/:tripId',
