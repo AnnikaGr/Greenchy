@@ -91,7 +91,7 @@ const TripSummaryView = {
 								.toFixed(2)}
 						</b>{" "}
 						kg Co2{" "} per passenger
-						<p class="help"> To delete a journey click on the corresponding element in the legend </p>
+						<p class={this.transportations && this.transportations.length > 0 ? "help" : "hidden"}> To delete a journey click on the corresponding element in the legend </p>
 					</p>
 					<div class="card-content">
 
