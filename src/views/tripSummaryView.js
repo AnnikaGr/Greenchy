@@ -9,7 +9,7 @@ const TripSummaryView = {
 		var series = [];
 
 		this.transportations.forEach(element => {
-			labels.push(element.co2.toFixed(1) + 'km of ' + element.modeOfTransport + ' - ' + element.co2.toFixed(1) + 'kg Co2');
+			labels.push(element.co2.toFixed(1) + 'km of ' + element.modeOfTransport + ' - ' + element.co2.toFixed(1) + 'kg Co2 X');
 			series.push(element.co2);
 		});
 
@@ -58,7 +58,7 @@ const TripSummaryView = {
 		var series = [];
 
 		this.transportations.forEach(element => {
-			labels.push(element.co2.toFixed(1) + 'km of ' + element.modeOfTransport + ' - ' + element.co2.toFixed(1) + 'kg Co2');
+			labels.push(element.co2.toFixed(1) + 'km of ' + element.modeOfTransport + ' - ' + element.co2.toFixed(1) + 'kg Co2 X');
 			series.push(element.co2);
 		});
 
