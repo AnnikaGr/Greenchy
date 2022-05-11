@@ -1,5 +1,6 @@
 import "charts.css";
 import ApexCharts from "apexcharts";
+import Swal from "sweetalert2";
 
 const TripSummaryView = {
 	props: ['tripId', 'transportations', 'onTransportDeletion'],
@@ -8,7 +9,7 @@ const TripSummaryView = {
 		var series = [];
 
 		this.transportations.forEach(element => {
-			labels.push('' + element.modeOfTransport + ' ' + element.co2.toFixed(1) + ' kg Co2' + '<button style="font-size: 10px; margin-left: 5px;">' + 'X' + '</button>');
+			labels.push(element.co2.toFixed(1) + 'km of ' + element.modeOfTransport + ' - ' + element.co2.toFixed(1) + 'kg Co2');
 			series.push(element.co2);
 		});
 
@@ -57,11 +58,11 @@ const TripSummaryView = {
 		var series = [];
 
 		this.transportations.forEach(element => {
-			labels.push('' + element.modeOfTransport + ' ' + element.co2.toFixed(1) + ' kg Co2' + '<button style="font-size: 10px; margin-left: 5px;">' + 'X' + '</button>');
+			labels.push(element.co2.toFixed(1) + 'km of ' + element.modeOfTransport + ' - ' + element.co2.toFixed(1) + 'kg Co2');
 			series.push(element.co2);
 		});
 
-		if (this.chart){
+		if (this.chart) {
 			const newOptions = {
 				series: series,
 				labels: labels
@@ -80,8 +81,8 @@ const TripSummaryView = {
 		}
 		return (
 			<div>
-				<div class="card box p-6">
-					<h2 class="title is-4">
+				<div class="card box p-6 container">
+					<p class="title is-4">
 						Overall Co2:{" "}
 						<b>
 							{" "}
@@ -90,19 +91,29 @@ const TripSummaryView = {
 								.toFixed(2)}
 						</b>{" "}
 						kg Co2{" "} per passenger
-					</h2>
+						<p class="help"> To delete a journey click on the corresponding element in the legend </p>
+					</p>
 					<div class="card-content">
+
 						<div id="chart" class={this.transportations && this.transportations.length > 0 ? "" : "hidden"}></div>
 					</div>
-					{this.transportations && this.transportations.length > 0 ?
-					(
-					<a class="button" href="https://store.compensate.com" target="_blank">
-						Compensate{" "}
-						{this.transportations
-							.reduce(calculateOverallCo2CB, 0.0)
-							.toFixed(2)}
-						kg of Co2 emissions
-					</a>) : false}
+					<div class="columns is-centered">
+
+						{this.transportations && this.transportations.length > 0 ?
+							(
+								<a class="button is-primary is-inverted is-title" href="https://store.compensate.com" target="_blank">
+									<span class="icon">
+										<i class="fa-regular fa-cloud-rainbow"></i>
+									</span>
+									Compensate{" "}
+									{this.transportations
+										.reduce(calculateOverallCo2CB, 0.0)
+										.toFixed(2)}
+									kg of Co2 emissions
+								</a>
+							) : false}
+					
+					</div>
 				</div>
 			</div>
 		);
