@@ -101,15 +101,11 @@ const TripSummaryView = {
 
 						{this.transportations && this.transportations.length > 0 ?
 							(
-								<a class="button is-primary is-inverted is-title" href="https://store.compensate.com" target="_blank">
+								<a class="button is-primary is-inverted is-title icon-text" href="https://store.compensate.com" target="_blank">
+									<span>Compensate {this.transportations.reduce(calculateOverallCo2CB, 0.0).toFixed(2)}kg of Co2 emissions</span>
 									<span class="icon">
-										<i class="fa-regular fa-cloud-rainbow"></i>
+										<i class="fa-solid fa-arrow-right"></i>
 									</span>
-									Compensate{" "}
-									{this.transportations
-										.reduce(calculateOverallCo2CB, 0.0)
-										.toFixed(2)}
-									kg of Co2 emissions
 								</a>
 							) : false}
 					
