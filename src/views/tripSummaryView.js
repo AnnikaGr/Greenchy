@@ -1,6 +1,4 @@
-import "charts.css";
 import ApexCharts from "apexcharts";
-import Swal from "sweetalert2";
 
 const TripSummaryView = {
 	props: ['tripId', 'transportations', 'onTransportDeletion'],

@@ -26,6 +26,24 @@ all its activities. You will have a full emission record of each
 trip. We also want to move from a simple distance input to a input
 via map and route planning to make it more intuitive.
 
+## Third party components
+We use multiple third party components/frameworks:
+
+|                 | Description                                              |
+| --------------- | -------------------------------------------------------- |
+| [SweetAlert](https://sweetalert2.github.io) | `Provides nice and easy popups`|
+| [Animejs](https://animejs.com) | `Provides smooth animation`|
+| [bodymovin](https://codepen.io/MarioD/pen/EvMNqE) | `Provides the beautiful planet on the Welcome Page`|
+| [Apex Charts](https://apexcharts.com) | `Provided the pie chart in the trip summary`|
+| Apex Charts Comment | `Apex Charts sometimes prints error messages in the console which are a known issue however and sadly unfixable`|
+| [Bulma](https://bulma.io) | `Our CSS framework`|
+| [Firebase](https://firebase.google.com) | `Used for authentication and persistance`|
+
+
+
+
+
+
 ## Project file structure
 
 **Greenchy code** is split in two main folders: **src** and **public**. Inside src we have the MVP architecture splitting the project in: 
