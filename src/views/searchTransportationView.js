@@ -50,10 +50,10 @@ function SearchTransportationView(props) {
 					
 					<a class="icon" onClick={() => 
 					Swal.fire({
-						title: 'How we calculate your spend?',
+						title: 'How do we calculate your emissions?',
 						text: 'We use Climatiq, an open database that allows you to collect emissions data, automate carbon emission calculations, and ultimately, to make data-supported sustainability decisions',
 						html:
-							'We use <a href="https://www.climatiq.io/">Climatiq.io</a>, ' +
+							'We use <a href="https://www.climatiq.io/" target="_blank">Climatiq.io</a>, ' +
 							'an open database that allows you to collect emissions data, automate carbon emission calculations, and ultimately, to make data-supported sustainability decisions.<br>'+
 							'<br>'+
 							'<b>Greenchy</b> shows you three kind of traveling alternatives:<br>' +
@@ -64,9 +64,10 @@ function SearchTransportationView(props) {
 							'<br>'+
 							'<i>Rail Travel: </i> Emission intensity for international rail passenger train including fuel consumption. The international rail factor is based on a passenger-km weighted average of the conversion factors for different Eurostar routes.',
 						imageUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/fu3npy69gwxg0geh7us1',
-						imageWidth: 200,
-						imageHeight: 200,
-						imageAlt: 'Custom image',
+						imageWidth: 100,
+						imageHeight: 100,
+						width: 800,
+						imageAlt: 'Climatiq Logo',
 					  })}>
 						<i class="fa-solid fa-circle-question"></i>
 					</a>
